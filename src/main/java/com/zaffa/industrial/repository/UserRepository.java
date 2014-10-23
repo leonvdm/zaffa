@@ -1,9 +1,12 @@
 package com.zaffa.industrial.repository;
 
+import java.util.List;
+
 import org.springframework.data.jpa.repository.JpaRepository;
 
+import com.zaffa.industrial.entity.Property;
 import com.zaffa.industrial.entity.User;
 
 public interface UserRepository extends JpaRepository<User, Integer>{
-
+	
 }
