@@ -9,6 +9,8 @@ import javax.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.zaffa.industrial.entity.Company;
+import com.zaffa.industrial.entity.Photo;
 import com.zaffa.industrial.entity.Property;
 import com.zaffa.industrial.entity.PropertyType;
 import com.zaffa.industrial.entity.Role;
@@ -53,12 +55,17 @@ public class InitDbService {
 		roleAdmin.setType(RoleType.ADMIN);
 		roleRepository.save(roleAdmin);
 		
+		Company com = new Company();
+		com.setName("GROWTHPOINT");
+		companyRepository.save(com);
+		
 		User userAdmin = new User();
 		userAdmin.setName("admin");
 		List<Role> roles = new ArrayList<Role>();
 		roles.add(roleUser);
 		roles.add(roleAdmin);
 		userAdmin.setRoles(roles);
+		userAdmin.setCompany(com);
 		userRepository.save(userAdmin);
 		
 		Property mercedes = new Property();
@@ -68,6 +75,7 @@ public class InitDbService {
 		mercedes.setSqm(5000);
 		mercedes.setIsAvailable(true);
 		mercedes.setPricePerSqm(1000d);
+		mercedes.setUploader(userAdmin);
 		propertyRepository.save(mercedes);
 		
 		Property absa = new Property();
@@ -77,7 +85,29 @@ public class InitDbService {
 		absa.setSqm(2000);
 		absa.setIsAvailable(true);
 		absa.setPricePerSqm(2000d);
+		absa.setUploader(userAdmin);
 		propertyRepository.save(absa);
+		
+		Photo one = new Photo();
+		one.setDescription("Photo1");
+		one.setUploadDate(java.sql.Date.valueOf("2015-01-01"));
+		one.setProperty(mercedes);
+		one.setUploader(userAdmin);
+		photoRepository.save(one);
+		
+		Photo two = new Photo();
+		two.setDescription("Photo2");
+		two.setUploadDate(java.sql.Date.valueOf("2016-01-01"));
+		two.setProperty(absa);
+		two.setUploader(userAdmin);
+		photoRepository.save(two);
+		
+		Photo three = new Photo();
+		three.setDescription("Photo3");
+		three.setUploadDate(java.sql.Date.valueOf("2014-01-01"));
+		three.setProperty(absa);
+		three.setUploader(userAdmin);
+		photoRepository.save(three);
 		
 	}
 

@@ -1,8 +1,12 @@
 package com.zaffa.industrial.entity;
 
+import java.util.List;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToMany;
 
 @Entity
 public class Company {
@@ -21,6 +25,18 @@ public class Company {
 	
 	private String accountManager;
 	
+	@OneToMany
+	@JoinColumn(name="company")
+	private List<User> users;
+	
+	public List<User> getUsers() {
+		return users;
+	}
+
+	public void setUsers(List<User> users) {
+		this.users = users;
+	}
+
 	public Integer getId() {
 		return id;
 	}
