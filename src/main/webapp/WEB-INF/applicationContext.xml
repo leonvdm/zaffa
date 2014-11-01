@@ -40,4 +40,6 @@
 	 
 	 <jpa:repositories base-package="com.zaffa.industrial.repository"></jpa:repositories>
 	 
+	 <import resource="security.xml" />
+	 
 </beans>
