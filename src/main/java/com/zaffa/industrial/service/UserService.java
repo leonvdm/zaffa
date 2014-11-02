@@ -1,17 +1,22 @@
 package com.zaffa.industrial.service;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.transaction.Transactional;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import com.zaffa.industrial.entity.Photo;
 import com.zaffa.industrial.entity.Property;
+import com.zaffa.industrial.entity.Role;
+import com.zaffa.industrial.entity.RoleType;
 import com.zaffa.industrial.entity.User;
 import com.zaffa.industrial.repository.PhotoRepository;
 import com.zaffa.industrial.repository.PropertyRepository;
+import com.zaffa.industrial.repository.RoleRepository;
 import com.zaffa.industrial.repository.UserRepository;
 
 @Service
@@ -23,6 +28,9 @@ public class UserService {
 	
 	@Autowired
 	private PropertyRepository propertyRepository;
+	
+	@Autowired
+	private RoleRepository roleRepository;
 	
 	@Autowired
 	private PhotoRepository photoRepository;
@@ -37,7 +45,17 @@ public class UserService {
 	}
 	
 	public void save(User user) {
+		user.setEnabled(true);
+		BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();
+		user.setPassword(encoder.encode(user.getPassword()));
+		
+		List<Role> roles = new ArrayList<Role>();
+		roles.add(roleRepository.findByName(RoleType.USER));
+		user.setRoles(roles);
+		
 		userRepository.save(user);
+		
+		
 	}
 
 	@Transactional
