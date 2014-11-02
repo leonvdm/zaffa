@@ -68,8 +68,17 @@ public class UserService {
 			List<Photo> photos = photoRepository.findByProperty(property);
 			property.setPhotos(photos);
 		}
+		
 		user.setProperties(properties);
 		
 		return user;
 	}
+
+	public User findOneWithProperties(String name) {
+		User user = userRepository.findByName(name);
+		return findOneWithPhotos(user.getId());
+	}
+	
+	
+	
 }

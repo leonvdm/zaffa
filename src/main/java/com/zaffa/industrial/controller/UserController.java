@@ -1,5 +1,7 @@
 package com.zaffa.industrial.controller;
 
+import java.security.Principal;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -8,7 +10,9 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
+import com.zaffa.industrial.entity.Property;
 import com.zaffa.industrial.entity.User;
+import com.zaffa.industrial.service.PropetyService;
 import com.zaffa.industrial.service.UserService;
 
 
@@ -19,9 +23,17 @@ public class UserController {
 	@Autowired
 	private UserService userService;
 	
+	@Autowired
+	private PropetyService propertyService;
+	
 	@ModelAttribute("user")
-	public User construct() {
+	public User constructUser() {
 		return new User();
+	}
+	
+	@ModelAttribute("property")
+	public Property constructProperty() {
+		return new Property();
 	}
 
 	@RequestMapping("/users")
@@ -44,6 +56,21 @@ public class UserController {
 	@RequestMapping(value="/register", method=RequestMethod.POST)
 	public String doRegister(@ModelAttribute("user") User user) {
 		userService.save(user);
-		return "user_register";
+		return "redirect:/register.html?success=true";
 	}
+	
+	@RequestMapping("/account")
+	public String account(Model model, Principal principal) {
+		String name = principal.getName(); 
+		model.addAttribute("user", userService.findOneWithProperties(name));
+		return "user-detail";
+	}
+	
+	@RequestMapping(value="/account", method=RequestMethod.POST)
+	public String doAddProperty(@ModelAttribute("property") Property property, Principal principal) {
+		propertyService.save(property, principal.getName());
+		return "redirect:/account.html";
+	}
+	
+	
 }
