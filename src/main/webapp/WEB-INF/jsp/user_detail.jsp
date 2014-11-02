@@ -47,19 +47,32 @@
 <br />
 <br />
 
+<script type="text/javascript">
+$(document).ready(function() {
+	$('.nav-tabs a:first').tab('show'); //select first tab
+});
+</script>
+
+
+
 <!-- Nav tabs -->
-<ul class="nav nav-tabs" role="tablist">
+<ul class="nav nav-tabs">
 	<c:forEach items="${user.properties}" var="property">
-		<li role="presentation"><a href="#property_${property.id}" role="tab" data-toggle="tab">${property.name}</a></li>
+		<li><a href="#property_${property.id}" data-toggle="tab">${property.name}</a></li>
 	</c:forEach>
 </ul>
 
 <!-- Tab panes -->
 <div class="tab-content">
 	<c:forEach items="${user.properties}" var="property">
-		<div role="tabpanel" class="tab-pane" id="property_${property.id} }">
+		<div class="tab-pane" id="property_${property.id}">
 			<h1>${property.name}</h1>
-			<h1>${property.type}</h1>
+			
+			<p>
+			
+			<a href="<pring:url value='/property/remove/${property.id}.html' />" class="btn btn-danger">remove property</a>
+			
+			${property.type}
 
 			<table class="table table-bordered table-hover table-striped">
 				<thead>

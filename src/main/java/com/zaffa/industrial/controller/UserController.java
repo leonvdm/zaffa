@@ -72,5 +72,11 @@ public class UserController {
 		return "redirect:/account.html";
 	}
 	
+	@RequestMapping("/property/remove/{id}") 
+	public String removeProperty(@PathVariable int id) {
+		propertyService.delete(id);
+		return "redirect:/account.html";
+	}
+	
 	
 }

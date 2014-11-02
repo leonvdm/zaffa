@@ -24,5 +24,11 @@ public class PropetyService {
 		propertyRepository.save(property);
 	}
 
+
+	public void delete(int id) {
+		propertyRepository.delete(id);
+		
+	}
+
 	
 }
