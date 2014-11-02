@@ -28,6 +28,8 @@ public class User {
 	
 	private String mobile;
 	
+	private boolean enabled;
+	
 	@OneToMany(mappedBy="uploader")
 	private List<Property> properties;
 	
@@ -41,6 +43,14 @@ public class User {
 	@ManyToOne
 	@JoinColumn(name = "company_id")
 	private Company company;
+	
+	public boolean isEnabled() {
+		return enabled;
+	}
+
+	public void setEnabled(boolean enabled) {
+		this.enabled = enabled;
+	}
 
 	public String getName() {
 		return name;

@@ -15,6 +15,7 @@ import com.zaffa.industrial.repository.PropertyRepository;
 import com.zaffa.industrial.repository.UserRepository;
 
 @Service
+@Transactional
 public class UserService {
 
 	@Autowired
@@ -33,6 +34,10 @@ public class UserService {
 
 	public User findOne(int id) {
 		return userRepository.findOne(id);
+	}
+	
+	public void save(User user) {
+		userRepository.save(user);
 	}
 
 	@Transactional

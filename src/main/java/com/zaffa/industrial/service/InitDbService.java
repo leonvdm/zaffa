@@ -61,6 +61,7 @@ public class InitDbService {
 		companyRepository.save(com);
 		
 		User userAdmin = new User();
+		userAdmin.setEnabled(true);
 		userAdmin.setName("admin");
 		BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();
 		userAdmin.setPassword(encoder.encode("admin"));

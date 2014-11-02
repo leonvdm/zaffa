@@ -25,8 +25,7 @@ public class Company {
 	
 	private String accountManager;
 	
-	@OneToMany
-	@JoinColumn(name="company")
+	@OneToMany(mappedBy="company")
 	private List<User> users;
 	
 	public List<User> getUsers() {

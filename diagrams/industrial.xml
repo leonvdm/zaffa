@@ -1,10 +1,21 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?><entities>
 	<entity>
-		<entity-name>com.zaffa.industrial.entity.User</entity-name>
+		<entity-name>com.zaffa.industrial.entity.Company</entity-name>
 		<entity-width>120</entity-width>
-		<entity-height>266</entity-height>
-		<entity-X-Coordinate>307</entity-X-Coordinate>
-		<entity-Y-Coordinate>68</entity-Y-Coordinate>
+		<entity-height>226</entity-height>
+		<entity-X-Coordinate>36</entity-X-Coordinate>
+		<entity-Y-Coordinate>41</entity-Y-Coordinate>
+		<primary-collapsed>false</primary-collapsed>
+		<relation-collapsed>false</relation-collapsed>
+		<basic-collapsed>false</basic-collapsed>
+	</entity>
+
+	<entity>
+		<entity-name>com.zaffa.industrial.entity.LeaseContract</entity-name>
+		<entity-width>120</entity-width>
+		<entity-height>246</entity-height>
+		<entity-X-Coordinate>637</entity-X-Coordinate>
+		<entity-Y-Coordinate>354</entity-Y-Coordinate>
 		<primary-collapsed>false</primary-collapsed>
 		<relation-collapsed>false</relation-collapsed>
 		<basic-collapsed>false</basic-collapsed>
@@ -22,11 +33,11 @@
 	</entity>
 
 	<entity>
-		<entity-name>com.zaffa.industrial.entity.Company</entity-name>
+		<entity-name>com.zaffa.industrial.entity.User</entity-name>
 		<entity-width>120</entity-width>
-		<entity-height>188</entity-height>
-		<entity-X-Coordinate>40</entity-X-Coordinate>
-		<entity-Y-Coordinate>125</entity-Y-Coordinate>
+		<entity-height>286</entity-height>
+		<entity-X-Coordinate>314</entity-X-Coordinate>
+		<entity-Y-Coordinate>11</entity-Y-Coordinate>
 		<primary-collapsed>false</primary-collapsed>
 		<relation-collapsed>false</relation-collapsed>
 		<basic-collapsed>false</basic-collapsed>
@@ -35,7 +46,7 @@
 	<entity>
 		<entity-name>com.zaffa.industrial.entity.Property</entity-name>
 		<entity-width>120</entity-width>
-		<entity-height>306</entity-height>
+		<entity-height>286</entity-height>
 		<entity-X-Coordinate>307</entity-X-Coordinate>
 		<entity-Y-Coordinate>390</entity-Y-Coordinate>
 		<primary-collapsed>false</primary-collapsed>
@@ -49,17 +60,6 @@
 		<entity-height>186</entity-height>
 		<entity-X-Coordinate>36</entity-X-Coordinate>
 		<entity-Y-Coordinate>479</entity-Y-Coordinate>
-		<primary-collapsed>false</primary-collapsed>
-		<relation-collapsed>false</relation-collapsed>
-		<basic-collapsed>false</basic-collapsed>
-	</entity>
-
-	<entity>
-		<entity-name>com.zaffa.industrial.entity.LeaseContract</entity-name>
-		<entity-width>120</entity-width>
-		<entity-height>246</entity-height>
-		<entity-X-Coordinate>637</entity-X-Coordinate>
-		<entity-Y-Coordinate>354</entity-Y-Coordinate>
 		<primary-collapsed>false</primary-collapsed>
 		<relation-collapsed>false</relation-collapsed>
 		<basic-collapsed>false</basic-collapsed>
