@@ -28,7 +28,7 @@
 </head>
 <body>
 
-	<%@ taglib uri="http://tiles.apache.org/tags-tiles-extras"prefix="tilesx"%>
+	<%@ taglib uri="http://tiles.apache.org/tags-tiles-extras" prefix="tilesx" %>
 	
 	<tilesx:useAttribute name="current"/>
 
@@ -58,7 +58,7 @@
 							<li class="${current == 'login' ? 'active' : ''}"><a href='<spring:url value="/login.html"/>'>Login</a></li>
 						</security:authorize>
 						<security:authorize access="isAuthenticated()">
-							<li class="${current == 'users' ? 'active' : ''}"><a href='<spring:url value="/account.html"/>'>My account</a></li>
+							<li class="${current == 'account' ? 'active' : ''}"><a href='<spring:url value="/account.html"/>'>My account</a></li>
 							<li><a href='<spring:url value="/logout"/>'>Logout</a></li>
 						</security:authorize>
 					</ul>

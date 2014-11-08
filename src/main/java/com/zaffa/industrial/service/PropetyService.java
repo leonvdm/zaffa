@@ -1,6 +1,8 @@
 package com.zaffa.industrial.service;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.method.P;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Service;
 
 import com.zaffa.industrial.entity.Property;
@@ -27,6 +29,18 @@ public class PropetyService {
 
 	public void delete(int id) {
 		propertyRepository.delete(id);
+		
+	}
+
+
+	public Property findOne(int id) {
+		return propertyRepository.findOne(id);
+	}
+
+
+	@PreAuthorize("#property.uploader.name == authentication.name or hasRole('ADMIN')")
+	public void delete(@P("property") Property prop) {
+		propertyRepository.delete(prop);
 		
 	}
 

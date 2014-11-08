@@ -3,8 +3,6 @@
 
 <%@ include file="../layout/taglib.jsp"%>
 
-<h1>${user.name }</h1>
-
 <!-- Button trigger modal -->
 <button type="button" class="btn btn-primary btn-lg" data-toggle="modal"
 	data-target="#myModal">New property</button>
@@ -26,14 +24,15 @@
 						<label for="name" class="col-sm-2 control-label">Name:</label>
 						<div class="col-sm-10">
 							<form:input path="name" cssClass="form-control" />
+							<form:errors path="name"/>
 						</div>
 					</div>
-					<div class="form-group">
-						<label for="sqm" class="col-sm-2 control-label">Size:</label>
-						<div class="col-sm-10">
-							<form:input path="sqm" cssClass="form-control" />
-						</div>
-					</div>
+<!-- 					<div class="form-group"> -->
+<!-- 						<label for="sqm" class="col-sm-2 control-label">Size:</label> -->
+<!-- 						<div class="col-sm-10"> -->
+<%-- 							<form:input path="sqm" cssClass="form-control" /> --%>
+<!-- 						</div> -->
+<!-- 					</div> -->
 				</div>
 				<div class="modal-footer">
 					<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
@@ -50,6 +49,12 @@
 <script type="text/javascript">
 $(document).ready(function() {
 	$('.nav-tabs a:first').tab('show'); //select first tab
+	$(".triggerRemove").click(function(e) {
+		e.preventDefault();
+		$("#modalRemove .removeBtn").attr("href", $(this).attr("href"));
+		$("#modalRemove").modal();
+		
+	});
 });
 </script>
 
@@ -70,7 +75,7 @@ $(document).ready(function() {
 			
 			<p>
 			
-			<a href="<pring:url value='/property/remove/${property.id}.html' />" class="btn btn-danger">remove property</a>
+			<a href="<spring:url value="/property/remove/${property.id}.html" />" class="btn btn-danger triggerRemove">remove property</a>
 			
 			${property.type}
 
@@ -93,4 +98,23 @@ $(document).ready(function() {
 		</div>
 	</c:forEach>
 
+</div>
+
+<!-- Modal -->
+<div class="modal fade" id="modalRemove" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+        <h4 class="modal-title" id="myModalLabel">Remove property</h4>
+      </div>
+      <div class="modal-body">
+        Really remove?
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
+        <a href="" class="btn btn-danger removeBtn">Remove</a>
+       </div>
+    </div>
+  </div>
 </div>

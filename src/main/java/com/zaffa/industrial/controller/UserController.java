@@ -2,9 +2,13 @@ package com.zaffa.industrial.controller;
 
 import java.security.Principal;
 
+import javax.validation.Valid;
+
+import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -20,63 +24,42 @@ import com.zaffa.industrial.service.UserService;
 @Controller
 public class UserController {
 
+	static Logger log = Logger.getLogger(UserController.class.getName());
+	
 	@Autowired
 	private UserService userService;
 	
 	@Autowired
 	private PropetyService propertyService;
 	
-	@ModelAttribute("user")
-	public User constructUser() {
-		return new User();
-	}
 	
 	@ModelAttribute("property")
 	public Property constructProperty() {
 		return new Property();
-	}
-
-	@RequestMapping("/users")
-	public String users(Model model) {
-		model.addAttribute("users", userService.findAll());
-		return "users";
-	}
-	
-	@RequestMapping("/users/{id}")
-	public String detail(Model model, @PathVariable int id) {
-		model.addAttribute("user", userService.findOneWithPhotos(id));
-		return "user-detail";
-	}
-	
-	@RequestMapping("/register")
-	public String showRegister() {
-		return "user_register";
-	}
-	
-	@RequestMapping(value="/register", method=RequestMethod.POST)
-	public String doRegister(@ModelAttribute("user") User user) {
-		userService.save(user);
-		return "redirect:/register.html?success=true";
 	}
 	
 	@RequestMapping("/account")
 	public String account(Model model, Principal principal) {
 		String name = principal.getName(); 
 		model.addAttribute("user", userService.findOneWithProperties(name));
-		return "user-detail";
+		return "account";
 	}
 	
 	@RequestMapping(value="/account", method=RequestMethod.POST)
-	public String doAddProperty(@ModelAttribute("property") Property property, Principal principal) {
-		propertyService.save(property, principal.getName());
+	public String doAddProperty(Model model, @Valid @ModelAttribute("property") Property property, BindingResult result, Principal principal) {
+		if (result.hasErrors()) {
+			return account(model, principal);
+		}
+		String name = principal.getName();
+		propertyService.save(property, name);
 		return "redirect:/account.html";
 	}
 	
 	@RequestMapping("/property/remove/{id}") 
 	public String removeProperty(@PathVariable int id) {
-		propertyService.delete(id);
+		Property prop = propertyService.findOne(id);
+		propertyService.delete(prop);
 		return "redirect:/account.html";
 	}
-	
 	
 }

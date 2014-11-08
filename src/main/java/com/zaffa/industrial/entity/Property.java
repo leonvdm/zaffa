@@ -3,6 +3,7 @@ package com.zaffa.industrial.entity;
 import java.sql.Date;
 import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
@@ -11,6 +12,7 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
+import javax.validation.constraints.Size;
 
 @Entity
 public class Property {
@@ -19,12 +21,13 @@ public class Property {
 	@GeneratedValue
 	private Integer id;
 	
+	@Size(min=3, message = "Name must be at least 3 characters!")
 	private String name;
 	
 	private Integer sqm;
 	
 	private Boolean isAvailable;
-	
+		
 	private Date availableDate;
 	
 	private Double pricePerSqm;
@@ -35,7 +38,7 @@ public class Property {
 	@OneToMany(mappedBy="leaseProperty")
 	private List<LeaseContract> leaseContracts;
 	
-	@OneToMany(mappedBy="property")
+	@OneToMany(mappedBy="property", cascade=CascadeType.REMOVE)
 	private List<Photo> photos;
 	
 	@ManyToOne
