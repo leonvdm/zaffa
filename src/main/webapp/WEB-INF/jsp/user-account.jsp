@@ -7,7 +7,7 @@
 <button type="button" class="btn btn-primary btn-lg" data-toggle="modal"
 	data-target="#myModal">New property</button>
 
-<form:form commandName="property" cssClass="form-horizontal">
+<form:form commandName="property" cssClass="form-horizontal propertyForm">
 	<!-- Modal -->
 	<div class="modal fade" id="myModal" tabindex="-1" role="dialog"
 		aria-labelledby="myModalLabel" aria-hidden="true">
@@ -55,7 +55,24 @@ $(document).ready(function() {
 		$("#modalRemove").modal();
 		
 	});
-});
+	$(".propertyForm").validate(
+			{
+				rules: {
+					name: {
+						required: true,
+						minlength: 3
+					},
+					
+				},
+				highlight: function(element) {
+					$(element).closest('.form-group').removeClass('has-success').addClass('has-error');
+				},
+				unhighlight: function(element) {
+					$(element).closest('.form-group').removeClass('has-error').addClass('has-success');
+				}
+			}
+		);
+	});
 </script>
 
 

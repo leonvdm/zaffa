@@ -3,6 +3,7 @@ package com.zaffa.industrial.entity;
 import java.util.List;
 
 import javax.persistence.CascadeType;
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
@@ -17,6 +18,8 @@ import javax.validation.constraints.Size;
 
 import org.hibernate.validator.constraints.Email;
 
+import com.zaffa.industrial.annotation.UniqueUsername;
+
 @Entity
 public class User {
 
@@ -25,6 +28,8 @@ public class User {
 	private Integer id;
 	
 	@Size(min=3, message = "Name must be at least 3 characters!")
+	@Column(unique = true)
+	@UniqueUsername(message="Username already exits!")
 	private String name;
 
 	@Size(min=1, message = "Invalid email address!")
