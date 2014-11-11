@@ -48,70 +48,73 @@ public class InitDbService {
 	
 	@PostConstruct
 	public void init() {
-		Role roleUser = new Role();
-		roleUser.setName(RoleType.USER);
-		roleRepository.save(roleUser);
+		if (roleRepository.findByName(RoleType.ADMIN) == null) {
+			
+			Role roleUser = new Role();
+			roleUser.setName(RoleType.USER);
+			roleRepository.save(roleUser);
+			
+			Role roleAdmin = new Role();
+			roleAdmin.setName(RoleType.ADMIN);
+			roleRepository.save(roleAdmin);
 		
-		Role roleAdmin = new Role();
-		roleAdmin.setName(RoleType.ADMIN);
-		roleRepository.save(roleAdmin);
-		
-		Company com = new Company();
-		com.setName("GROWTHPOINT");
-		companyRepository.save(com);
-		
-		User userAdmin = new User();
-		userAdmin.setEnabled(true);
-		userAdmin.setName("admin");
-		BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();
-		userAdmin.setPassword(encoder.encode("admin"));
-		List<Role> roles = new ArrayList<Role>();
-		roles.add(roleUser);
-		roles.add(roleAdmin);
-		userAdmin.setRoles(roles);
-		userAdmin.setCompany(com);
-		userRepository.save(userAdmin);
-		
-		Property mercedes = new Property();
-		mercedes.setType(PropertyType.FACTORY);
-		mercedes.setName("Mercedes Factory");
-		mercedes.setAvailableDate(java.sql.Date.valueOf("2015-01-01"));
-		mercedes.setSqm(5000);
-		mercedes.setIsAvailable(true);
-		mercedes.setPricePerSqm(1000d);
-		mercedes.setUploader(userAdmin);
-		propertyRepository.save(mercedes);
-		
-		Property absa = new Property();
-		absa.setType(PropertyType.COMMERCIAL);
-		absa.setName("ABSA Bank");
-		absa.setAvailableDate(java.sql.Date.valueOf("2015-02-01"));
-		absa.setSqm(2000);
-		absa.setIsAvailable(true);
-		absa.setPricePerSqm(2000d);
-		absa.setUploader(userAdmin);
-		propertyRepository.save(absa);
-		
-		Photo one = new Photo();
-		one.setDescription("Photo1");
-		one.setUploadDate(java.sql.Date.valueOf("2015-01-01"));
-		one.setProperty(mercedes);
-		one.setUploader(userAdmin);
-		photoRepository.save(one);
-		
-		Photo two = new Photo();
-		two.setDescription("Photo2");
-		two.setUploadDate(java.sql.Date.valueOf("2016-01-01"));
-		two.setProperty(absa);
-		two.setUploader(userAdmin);
-		photoRepository.save(two);
-		
-		Photo three = new Photo();
-		three.setDescription("Photo3");
-		three.setUploadDate(java.sql.Date.valueOf("2014-01-01"));
-		three.setProperty(absa);
-		three.setUploader(userAdmin);
-		photoRepository.save(three);
+			Company com = new Company();
+			com.setName("GROWTHPOINT");
+			companyRepository.save(com);
+			
+			User userAdmin = new User();
+			userAdmin.setEnabled(true);
+			userAdmin.setName("admin");
+			BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();
+			userAdmin.setPassword(encoder.encode("admin"));
+			List<Role> roles = new ArrayList<Role>();
+			roles.add(roleUser);
+			roles.add(roleAdmin);
+			userAdmin.setRoles(roles);
+			userAdmin.setCompany(com);
+			userRepository.save(userAdmin);
+			
+			Property mercedes = new Property();
+			mercedes.setType(PropertyType.FACTORY);
+			mercedes.setName("Mercedes Factory");
+			mercedes.setAvailableDate(java.sql.Date.valueOf("2015-01-01"));
+			mercedes.setSqm(5000);
+			mercedes.setIsAvailable(true);
+			mercedes.setPricePerSqm(1000d);
+			mercedes.setUploader(userAdmin);
+			propertyRepository.save(mercedes);
+			
+			Property absa = new Property();
+			absa.setType(PropertyType.COMMERCIAL);
+			absa.setName("ABSA Bank");
+			absa.setAvailableDate(java.sql.Date.valueOf("2015-02-01"));
+			absa.setSqm(2000);
+			absa.setIsAvailable(true);
+			absa.setPricePerSqm(2000d);
+			absa.setUploader(userAdmin);
+			propertyRepository.save(absa);
+			
+			Photo one = new Photo();
+			one.setDescription("Photo1");
+			one.setUploadDate(java.sql.Date.valueOf("2015-01-01"));
+			one.setProperty(mercedes);
+			one.setUploader(userAdmin);
+			photoRepository.save(one);
+			
+			Photo two = new Photo();
+			two.setDescription("Photo2");
+			two.setUploadDate(java.sql.Date.valueOf("2016-01-01"));
+			two.setProperty(absa);
+			two.setUploader(userAdmin);
+			photoRepository.save(two);
+			
+			Photo three = new Photo();
+			three.setDescription("Photo3");
+			three.setUploadDate(java.sql.Date.valueOf("2014-01-01"));
+			three.setProperty(absa);
+			three.setUploader(userAdmin);
+			photoRepository.save(three);
+		}
 		
 	}
 

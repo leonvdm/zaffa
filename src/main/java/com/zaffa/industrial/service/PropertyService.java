@@ -11,7 +11,7 @@ import com.zaffa.industrial.repository.PropertyRepository;
 import com.zaffa.industrial.repository.UserRepository;
 
 @Service
-public class PropetyService {
+public class PropertyService {
 	
 	@Autowired
 	private PropertyRepository propertyRepository;
