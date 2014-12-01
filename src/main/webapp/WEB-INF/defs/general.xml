@@ -7,7 +7,11 @@
     <put-attribute name="footer" value="/WEB-INF/layout/footer.jsp" />
   </definition>
   
-  <definition name="index" extends="common">
+  <definition name="map" template="/WEB-INF/layout/map.jsp">
+    <put-attribute name="footer" value="/WEB-INF/layout/footer.jsp" />
+  </definition>
+  
+  <definition name="index" extends="map">
     <put-attribute name="title" value="Industrial property" />
     <put-attribute name="body" value="/WEB-INF/jsp/index.jsp" />
     <put-attribute name="current" value="index"/>
