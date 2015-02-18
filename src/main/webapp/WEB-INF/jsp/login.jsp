@@ -62,11 +62,10 @@ $( document ).ready(function() {
 			<!-- Body -->
 			<div class="modal-body">
 			<c:if test="${not empty param.error}">
-    			<font color="red">
-        			Login error. <br />
-        			Reason : ${sessionScope["SPRING_SECURITY_LAST_EXCEPTION"].message}
-    </font>
-</c:if>
+    			<div class="alert alert-danger" role="alert">
+        			Invalid username and password combination
+    			</div>
+			</c:if>
 				
 				<form class="form-signin" role="form" action="/j_spring_security_check" method="POST">
 					

@@ -105,10 +105,6 @@ $(document).ready(function() {
 					required: true,
 					minlength: 3,
 				},
-				userName: {
-					required: true,
-					minlength: 3,
-				},
 				contactNumber: {
 					required: true,
 					minlength: 9,

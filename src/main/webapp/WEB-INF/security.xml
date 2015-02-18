@@ -14,6 +14,7 @@
   <intercept-url pattern="/users/**" access="hasRole('ADMIN')" />
   <intercept-url pattern="/account**" access="hasRole('USER')" />
   <intercept-url pattern="/resources/**" access="permitAll" />
+   <intercept-url pattern="/upload**" access="hasRole('USER')" />
   <form-login login-page="/login.html" authentication-failure-url="/login.html?error=true" />
   <logout logout-url="/logout" />
 </http>

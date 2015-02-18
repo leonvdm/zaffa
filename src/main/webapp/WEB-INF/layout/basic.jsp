@@ -69,9 +69,9 @@ body {
 			</a>
 				
 			<div class="Nav">
-			 	<a href='<spring:url value="/users.html"/>' class="HeaderText">Find</a>
-			 	<a href='<spring:url value="/users.html"/>' class="HeaderText">Upload</a>
-			 	<a href='<spring:url value="/users.html"/>' class="HeaderText">Contact</a>
+			 	<a href='<spring:url value="/find.html"/>' class="HeaderText">Find</a>
+			 	<a href='<spring:url value="/upload.html"/>' class="HeaderText">Upload</a>
+			 	<a href='<spring:url value="/contact.html"/>' class="HeaderText">Contact</a>
 			 	<security:authorize access="! isAuthenticated()">
 			 		<a href='<spring:url value="/login.html"/>' class="HeaderText">Login</a>
 			 		<a href='<spring:url value="/register.html"/>' class="HeaderText">Register</a>

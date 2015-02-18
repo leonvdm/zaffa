@@ -35,6 +35,12 @@
     <put-attribute name="current" value="account"/>
   </definition>
   
+  <definition name="contact" extends="nomap">
+    <put-attribute name="title" value="Contact" />
+    <put-attribute name="body" value="/WEB-INF/jsp/contact.jsp" />
+    <put-attribute name="current" value="contact"/>
+  </definition>
+  
   <definition name="user-register" extends="common">
     <put-attribute name="title" value="User registration" />
     <put-attribute name="body" value="/WEB-INF/jsp/user-register.jsp" />
@@ -45,5 +51,17 @@
     <put-attribute name="title" value="Login" />
     <put-attribute name="body" value="/WEB-INF/jsp/login.jsp" />
     <put-attribute name="current" value="login"/>
+  </definition>
+  
+   <definition name="upload" extends="common">
+    <put-attribute name="title" value="Upload a property" />
+    <put-attribute name="body" value="/WEB-INF/jsp/upload.jsp" />
+    <put-attribute name="current" value="upload"/>
+  </definition>
+  
+  <definition name="find" extends="common">
+    <put-attribute name="title" value="Find a property" />
+    <put-attribute name="body" value="/WEB-INF/jsp/find.jsp" />
+    <put-attribute name="current" value="find"/>
   </definition>
 </tiles-definitions>
