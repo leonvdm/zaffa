@@ -7,13 +7,17 @@
     <put-attribute name="footer" value="/WEB-INF/layout/footer.jsp" />
   </definition>
   
+  <definition name="nomap" template="/WEB-INF/layout/basic.jsp">
+    <put-attribute name="footer" value="/WEB-INF/layout/footer.jsp" />
+  </definition>
+  
   <definition name="index" extends="common">
     <put-attribute name="title" value="Industrial property" />
     <put-attribute name="body" value="/WEB-INF/jsp/index.jsp" />
     <put-attribute name="current" value="index"/>
   </definition>
   
-  <definition name="users" extends="common">
+  <definition name="users" extends="nomap">
     <put-attribute name="title" value="Industrial property" />
     <put-attribute name="body" value="/WEB-INF/jsp/users.jsp" />
     <put-attribute name="current" value="users"/>
@@ -25,7 +29,7 @@
     <put-attribute name="current" value="users"/>
   </definition>
   
-   <definition name="account" extends="common">
+   <definition name="account" extends="nomap">
     <put-attribute name="title" value="User account" />
     <put-attribute name="body" value="/WEB-INF/jsp/user-account.jsp" />
     <put-attribute name="current" value="account"/>

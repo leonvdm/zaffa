@@ -22,7 +22,7 @@ public class UniqueUsernameValidator implements ConstraintValidator<UniqueUserna
 		if (userRepository == null) {
 			return true;
 		}
-		return userRepository.findByName(username) == null;
+		return userRepository.findByUserName(username) == null;
 	}
 
 }

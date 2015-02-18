@@ -21,7 +21,7 @@ public class PropetyService {
 	
 	
 	public void save(Property property, String name) {
-		User user = userRepository.findByName(name);
+		User user = userRepository.findByUserName(name);
 		property.setUploader(user);
 		propertyRepository.save(property);
 	}
@@ -38,7 +38,7 @@ public class PropetyService {
 	}
 
 
-	@PreAuthorize("#property.uploader.name == authentication.name or hasRole('ADMIN')")
+	@PreAuthorize("#property.uploader.userName == authentication.userName or hasRole('ADMIN')")
 	public void delete(@P("property") Property prop) {
 		propertyRepository.delete(prop);
 		

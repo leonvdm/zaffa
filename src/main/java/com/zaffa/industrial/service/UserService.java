@@ -75,7 +75,7 @@ public class UserService {
 	}
 
 	public User findOneWithProperties(String name) {
-		User user = userRepository.findByName(name);
+		User user = userRepository.findByUserName(name);
 		return findOneWithPhotos(user.getId());
 	}
 
@@ -85,7 +85,7 @@ public class UserService {
 	}
 
 	public User findOne(String username) {
-		return userRepository.findByName(username);
+		return userRepository.findByUserName(username);
 		
 	}
 	

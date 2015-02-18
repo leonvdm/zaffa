@@ -27,18 +27,44 @@
 
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
 
-<!-- Include Google Maps JS AIP -->
-<script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDkLhXSkaXTfPRzUrOPcb0L5iG0ldMIeeM&sensor=false">
-	
-</script>
-
 <tilesx:useAttribute name="current" />
 </head>
+
+<style>
+.table-bordered {
+	border: 1px solid #ddd;
+}
+
+.table {
+	width: 100%;
+	max-width: 100%;
+	margin-bottom: 20px;
+}
+
+table {
+	background-color: transparent;
+	border-spacing: 0;
+	border-collapse: collapse;
+	display: table;
+	border-collapse: separate;
+	border-spacing: 2px;
+	border-color: gray;
+}
+
+body {
+	font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
+	font-size: 12px;
+	line-height: 1.42857143;
+	color: #333;
+	background-color: #fff;
+}
+
+</style>
 
 <body>
 	<div class="MainWrapper" >
     	<div class="Header" id="zaffaHeader">
-        	<a href="#">
+        	<a href='<spring:url value="/index.html"/>'>
 				<img src="<spring:url value='/resources/images/ToLet-logo.png'/>" class="Logo">
 			</a>
 				
@@ -59,9 +85,6 @@
 				</security:authorize>
 			</div>
 		</div>
-            	
-       <div id="map_canvas">
-       </div>
 	</div>
 	
 </body>
@@ -75,42 +98,5 @@
 	</center>
 
 </div>
-
-<script type="text/javascript">
-	<!-- Map creation is here -->
-	
-	//Defining map as a global variable to access from other functions
-	var map;
-	var geocoder;
-	
-	//uses the whole screen below the header section to render map relative to current screensize
-	function setDimensions() {
-		
-		var viewPortWidth = $(window).width() - 17;
-		var viewPortHeight = $(window).height() - $("#zaffaHeader").height() - 60;
-		$("#map_canvas").width(viewPortWidth).height(viewPortHeight);
-	}
-
-	function initMap() {
-		
-		setDimensions();
-		
-		google.maps.visualRefresh = true;
-	
-		var mapOptions = {
-	               zoom: 14,
-	               center: new google.maps.LatLng(-33.876787983965244, 18.556208610534668),
-	               mapTypeId: google.maps.MapTypeId.ROADMAP
-	           };
-		
-	  		map = new google.maps.Map(document.getElementById("map_canvas"), mapOptions);
-	
-	}
-	
-	google.maps.event.addDomListener(window, 'load', initMap);
-</script>
-
-
-
 
 </html>

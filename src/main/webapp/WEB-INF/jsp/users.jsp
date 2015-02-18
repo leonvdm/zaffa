@@ -3,6 +3,9 @@
 
 <%@ include file="../layout/taglib.jsp" %>
 
+
+
+
 <script type="text/javascript">
 $(document).ready(function() {
 	$('.nav-tabs a:first').tab('show'); //select first tab
@@ -15,11 +18,17 @@ $(document).ready(function() {
 });
 </script>
 
+<style>
+.table {
+	margin-top: 10px;
+}
+</style>
+
 <table class="table table-bordered table-hover table-striped">
 	<thead>
 		<tr>
-			<th>user name</th>
-			<th>operation</th>
+			<th>USER NAME</th>
+			<th>OPERATION</th>
 		</tr>
 	</thead>
 	<tbody>
@@ -27,7 +36,8 @@ $(document).ready(function() {
 			<tr>
 				<td>
 					<a href="<spring:url value="/users/${user.id}.html" />">
-						<c:out value="${user.name}" />
+						<c:out value="${user.firstName}" />
+						<c:out value="${user.lastName}" />
 					</a>
 				</td>
 				<td>

@@ -3,45 +3,80 @@
 
 <%@ include file="../layout/taglib.jsp" %>
 
-<form:form commandName="user" cssClass="form-horizontal registrationForm">
 
-	<c:if test="${param.success eq true}">
-		<div class="alert alert-success">Registration successful!</div>
-	</c:if>
-	<div class="form-group">
-		<label	for="name" class="col-sm-2 control-label">Name:</label>
-		<div class="col-sm-10">
-			<form:input path="name" cssClass="form-control"/>
-			<form:errors path="name"/>
+<script>
+$( document ).ready(function() {
+	$('#registerModal').modal('show');
+});
+</script>
+
+<div class="modal fade" id="registerModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+	<div class="modal-dialog">
+		<div class="modal-content">
+			<!-- Header -->
+			<div class="modal-header">
+				<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+				<h4 class="modal-title">Welcome to Zaffa</h4>
+			</div>
+			<!-- Body -->
+			<div class="modal-body">
+				<form:form commandName="user" class="form-horizontal registrationForm form-register">
+
+				<c:if test="${param.success eq true}">
+					<div class="alert alert-success">Registration successful!</div>
+				</c:if>
+				<div class="form-group">
+					<div class="col-sm-10">
+						<form:input path="firstName" class="form-control"  placeholder="First Name"/>
+						<form:errors path="firstName"/>
+					</div>
+				</div>
+				<div class="form-group">
+					<div class="col-sm-10">
+						<form:input path="lastName" class="form-control" placeholder="Last Name"/>
+						<form:errors path="lastName"/>
+					</div>
+				</div>
+				<div class="form-group">
+					<div class="col-sm-10">
+						<form:input path="userName" class="form-control" placeholder="Username"/>
+						<form:errors path="userName"/>
+					</div>
+				</div>
+				<div class="form-group">
+					<div class="col-sm-10">
+						<form:input path="contactNumber" class="form-control" placeholder="Contact Number"/>
+						<form:errors path="contactNumber"/>
+					</div>
+				</div>
+				<div class="form-group">
+					<div class="col-sm-10">
+						<form:input path="email" class="form-control" placeholder="Email"/>
+						<form:errors path="email"/>
+					</div>
+				</div>
+				<div class="form-group">
+					<div class="col-sm-10">
+						<form:password path="password" class="form-control" placeholder="Password"/>
+						<form:errors path="password"/>
+					</div>
+				</div>
+				<div class="form-group">
+					<div class="col-sm-10">
+						<input type="password" name="password_again" id="password_again" class="form-control" placeholder="Confirm Password"/>
+					</div>
+				</div>
+				<div class="form-group">
+					<div class="col-sm-2">
+						<input type="submit" value="Save" class="btn btn-lg btn-primary"/>
+					</div>
+				</div>
+			</form:form>
+
+			</div>
 		</div>
 	</div>
-	<div class="form-group">
-		<label	for="email" class="col-sm-2 control-label">Email:</label>
-		<div class="col-sm-10">
-			<form:input path="email" cssClass="form-control"/>
-			<form:errors path="email"/>
-		</div>
-	</div>
-	<div class="form-group">
-		<label	for="password" class="col-sm-2 control-label">Password:</label>
-		<div class="col-sm-10">
-			<form:password path="password" cssClass="form-control"/>
-			<form:errors path="password"/>
-		</div>
-	</div>
-	<div class="form-group">
-		<label	for="password" class="col-sm-2 control-label">Password again:</label>
-		<div class="col-sm-10">
-			<input type="password" name="password_again" id="password_again" class="form-control"/>
-			
-		</div>
-	</div>
-	<div class="form-group">
-		<div class="col-sm-2">
-			<input type="submit" value="Save" class="btn btn-lg btn-primary"/>
-		</div>
-	</div>
-</form:form>
+</div>
 
 <script type="text/javascript">
 $(document).ready(function() {
@@ -49,7 +84,7 @@ $(document).ready(function() {
 	$(".registrationForm").validate(
 		{
 			rules: {
-				name: {
+				userName: {
 					required: true,
 					minlength: 3,
 					remote: {
@@ -57,10 +92,26 @@ $(document).ready(function() {
 						type: "get", 
 						data: {
 							username: function() {
-								return $("#name").val();
+								return $("#userName").val();
 							}
 						}
 					}
+				},
+				firstName: {
+					required: true,
+					minlength: 3
+				},
+				lastName: {
+					required: true,
+					minlength: 3,
+				},
+				userName: {
+					required: true,
+					minlength: 3,
+				},
+				contactNumber: {
+					required: true,
+					minlength: 9,
 				},
 				email: {
 					required: true,
@@ -83,7 +134,7 @@ $(document).ready(function() {
 				$(element).closest('.form-group').removeClass('has-error').addClass('has-success');
 			},
 			messages: {
-				name: {
+				userName: {
 					remote: "Username already exist!"
 				}
 			}

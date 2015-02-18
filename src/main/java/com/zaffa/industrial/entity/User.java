@@ -26,21 +26,28 @@ public class User {
 	@Id
 	@GeneratedValue
 	private Integer id;
+
 	
-	@Size(min=3, message = "Name must be at least 3 characters!")
+	@Size(min=3, message = "First name must be at least 3 characters!")
+	private String firstName;
+	
+	@Size(min=3, message = "Last name must be at least 3 characters!")
+	private String lastName;
+	
+	@Size(min=3, message = "Username must be at least 3 characters!")
 	@Column(unique = true)
 	@UniqueUsername(message="Username already exits!")
-	private String name;
+	private String userName;
 
 	@Size(min=1, message = "Invalid email address!")
-	@Email(message = "Name must be at least 3 characters!")
+	@Email(message = "Email must be at least 3 characters!")
 	private String email;
 	
-	@Size(min=3, message = "Name must be at least 5 characters!")
+	@Size(min=3, message = "Password must be at least 5 characters!")
 	private String password;
 	
-	
-	private String mobile;
+	@Size(min=3, message = "Contact number must be at least 10 characters!")
+	private String contactNumber;
 	
 	private boolean enabled;
 	
@@ -65,55 +72,7 @@ public class User {
 	public void setEnabled(boolean enabled) {
 		this.enabled = enabled;
 	}
-
-	public String getName() {
-		return name;
-	}
-
-	public void setName(String name) {
-		this.name = name;
-	}
-
-	public String getEmail() {
-		return email;
-	}
-
-	public void setEmail(String email) {
-		this.email = email;
-	}
-
-	public String getPassword() {
-		return password;
-	}
-
-	public void setPassword(String password) {
-		this.password = password;
-	}
 	
-	public Integer getId() {
-		return id;
-	}
-
-	public void setId(Integer id) {
-		this.id = id;
-	}
-
-	public List<Role> getRoles() {
-		return roles;
-	}
-
-	public void setRoles(List<Role> roles) {
-		this.roles = roles;
-	}
-
-	public String getMobile() {
-		return mobile;
-	}
-
-	public void setMobile(String mobile) {
-		this.mobile = mobile;
-	}
-
 	public UserType getType() {
 		return type;
 	}
@@ -138,8 +97,68 @@ public class User {
 		this.properties = properties;
 	}
 
-	
-	
-	
+	public Integer getId() {
+		return id;
+	}
+
+	public void setId(Integer id) {
+		this.id = id;
+	}
+
+	public String getFirstName() {
+		return firstName;
+	}
+
+	public void setFirstName(String firstName) {
+		this.firstName = firstName;
+	}
+
+	public String getLastName() {
+		return lastName;
+	}
+
+	public void setLastName(String lastName) {
+		this.lastName = lastName;
+	}
+
+	public String getUserName() {
+		return userName;
+	}
+
+	public void setUserName(String userName) {
+		this.userName = userName;
+	}
+
+	public String getEmail() {
+		return email;
+	}
+
+	public void setEmail(String email) {
+		this.email = email;
+	}
+
+	public String getPassword() {
+		return password;
+	}
+
+	public void setPassword(String password) {
+		this.password = password;
+	}
+
+	public String getContactNumber() {
+		return contactNumber;
+	}
+
+	public void setContactNumber(String contactNumber) {
+		this.contactNumber = contactNumber;
+	}
+
+	public List<Role> getRoles() {
+		return roles;
+	}
+
+	public void setRoles(List<Role> roles) {
+		this.roles = roles;
+	}
 	
 }

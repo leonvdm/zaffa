@@ -9,6 +9,8 @@
 
 <mvc:annotation-driven/>
 
+<mvc:resources mapping="/resources/**" location="/resources/" />
+
 <context:component-scan base-package="com.zaffa.industrial.controller"></context:component-scan>
 
 <bean id="tilesConfigurer" class="org.springframework.web.servlet.view.tiles3.TilesConfigurer">

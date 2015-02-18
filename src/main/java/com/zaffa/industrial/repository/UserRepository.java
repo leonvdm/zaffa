@@ -6,6 +6,6 @@ import com.zaffa.industrial.entity.User;
 
 public interface UserRepository extends JpaRepository<User, Integer>{
 
-	User findByName(String name);
+	User findByUserName(String userName);
 	
 }

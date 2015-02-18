@@ -1,7 +1,6 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 
-
+<%@ include file="../layout/taglib.jsp"%>
 <style>
 
 
@@ -46,10 +45,40 @@
 }
 </style>
 
-<form class="form-signin" role="form" action="/j_spring_security_check" method="POST">
+<script>
+$( document ).ready(function() {
+	$('#loginModal').modal('show');
+});
+</script>
 
-	<h2 class="form-signin-heading">Please sign in</h2>
-	<input type="text" name="j_username" class="form-control" placeholder="Name" required autofocus> 
-	<input type="password" name="j_password" class="form-control" placeholder="Password" required>
-	<button class="btn btn-lg btn-primary btn-block" type="submit">Sign in</button>
-</form>
+<div class="modal fade" id="loginModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+	<div class="modal-dialog">
+		<div class="modal-content">
+			<!-- Header -->
+			<div class="modal-header">
+				<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+				<h4 class="modal-title">Please sign in</h4>
+			</div>
+			<!-- Body -->
+			<div class="modal-body">
+			<c:if test="${not empty param.error}">
+    			<font color="red">
+        			Login error. <br />
+        			Reason : ${sessionScope["SPRING_SECURITY_LAST_EXCEPTION"].message}
+    </font>
+</c:if>
+				
+				<form class="form-signin" role="form" action="/j_spring_security_check" method="POST">
+					
+					<div class="form-group">
+						<input type="text" name="j_username" class="form-control" placeholder="User Name" required autofocus>
+					</div> 
+					<div class="form-group">
+						<input type="password" name="j_password" class="form-control" placeholder="Password" required>
+					</div>
+					<input type="submit" value="Sign in" class="btn btn-lg btn-primary"/>
+				</form>
+			</div>
+		</div>
+	</div>
+</div>
