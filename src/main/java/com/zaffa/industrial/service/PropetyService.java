@@ -38,7 +38,7 @@ public class PropetyService {
 	}
 
 
-	@PreAuthorize("#property.uploader.userName == authentication.userName or hasRole('ADMIN')")
+	@PreAuthorize("#property.uploader.userName == authentication.name or hasRole('ADMIN')")
 	public void delete(@P("property") Property prop) {
 		propertyRepository.delete(prop);
 		
