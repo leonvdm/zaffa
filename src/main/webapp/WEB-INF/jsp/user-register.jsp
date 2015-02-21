@@ -107,7 +107,8 @@ $(document).ready(function() {
 				},
 				contactNumber: {
 					required: true,
-					minlength: 9,
+					minlength: 10,
+					digits: true
 				},
 				email: {
 					required: true,

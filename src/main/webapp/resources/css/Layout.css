@@ -7,15 +7,15 @@ a {
 	color: Navy;
 }
 
-/* body { */
-/* 	padding: 0px; */
-/* 	margin: 0px; */
-/* 	height: 100%; */
-/* 	background-color: #FFFFFF; */
-/* 	font-family: arial; */
-/* 	font-size: .95em; */
-/* 	color: #666666; */
-/* } */
+body {
+	padding: 0px;
+	margin: 0px;
+	height: 100%;
+	background-color: #FFFFFF;
+	font-family: arial;
+	font-size: .95em;
+	color: #666666;
+}
 
 .MainWrapper {
 	position: relative;
