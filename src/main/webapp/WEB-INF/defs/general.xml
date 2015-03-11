@@ -63,6 +63,12 @@
     <put-attribute name="current" value="upload"/>
   </definition>
   
+   <definition name="uploadTest" extends="uploadForm">
+    <put-attribute name="title" value="Upload a property" />
+    <put-attribute name="body" value="/WEB-INF/jsp/upload.jsp" />
+    <put-attribute name="current" value="upload"/>
+  </definition>
+  
   <definition name="find" extends="common">
     <put-attribute name="title" value="Find a property" />
     <put-attribute name="body" value="/WEB-INF/jsp/find.jsp" />

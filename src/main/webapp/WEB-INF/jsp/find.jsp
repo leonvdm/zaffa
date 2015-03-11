@@ -6,7 +6,7 @@
 
 <script>
 $( document ).ready(function() {
-	$('#findModal').modal('show');
+	//$('#findModal').modal('show');
 });
 </script>
 
