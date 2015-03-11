@@ -24,6 +24,20 @@ public class Property {
 	@Size(min=3, message = "Name must be at least 3 characters!")
 	private String name;
 	
+	private String searchString;
+	
+	private String street_number;
+	
+	private String route;
+	
+	private String locality;
+	
+	private String province;
+	
+	private String postal_code;
+	
+	private String country;
+	
 	private Integer sqm;
 	
 	private Boolean isAvailable;
@@ -124,5 +138,62 @@ public class Property {
 	public void setUploader(User uploader) {
 		this.uploader = uploader;
 	}
+
+	public String getSearchString() {
+		return searchString;
+	}
+
+	public void setSearchString(String searchString) {
+		this.searchString = searchString;
+	}
+
+	public String getStreet_number() {
+		return street_number;
+	}
+
+	public void setStreet_number(String street_number) {
+		this.street_number = street_number;
+	}
+
+	public String getRoute() {
+		return route;
+	}
+
+	public void setRoute(String route) {
+		this.route = route;
+	}
+
+	public String getLocality() {
+		return locality;
+	}
+
+	public void setLocality(String locality) {
+		this.locality = locality;
+	}
+
+	public String getProvince() {
+		return province;
+	}
+
+	public void setProvince(String province) {
+		this.province = province;
+	}
+
+	public String getPostal_code() {
+		return postal_code;
+	}
+
+	public void setPostal_code(String postal_code) {
+		this.postal_code = postal_code;
+	}
+
+	public String getCountry() {
+		return country;
+	}
+
+	public void setCountry(String country) {
+		this.country = country;
+	}
+	
 	
 }

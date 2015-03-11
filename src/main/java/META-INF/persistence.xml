@@ -4,8 +4,8 @@
 		<class>com.zaffa.industrial.entity.User</class>
 		<class>com.zaffa.industrial.entity.Property</class>
 		<class>com.zaffa.industrial.entity.LeaseContract</class>
-		<class>com.zaffa.industrial.entity.Photo</class>
 		<class>com.zaffa.industrial.entity.Role</class>
 		<class>com.zaffa.industrial.entity.Company</class>
+		<class>com.zaffa.industrial.entity.Photo</class>
 	</persistence-unit>
 </persistence>

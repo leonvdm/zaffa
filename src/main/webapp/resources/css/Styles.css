@@ -1,0 +1,134 @@
+.map_canvas { 
+	width: 100%; 
+	height: 400px; 
+	margin: 20px 0px;
+/* 	background-image: url(../img/splash-screen.png); */
+	background-size: 100% 115%;
+	background-position: center;
+	border: 1px solid #000;
+}
+
+.span4 .map_canvas { 
+	height: 200px; 
+	width: 95%; 
+}
+
+.carousel-indicators {
+	cursor: pointer;
+}
+
+#emailDetails{
+	padding-left:15px;
+	border-left:3px solid #AACAEA;
+	margin-left:15px;
+}
+
+h1,h2,h3{
+	color: #0095bf;
+}
+
+h4,h5,h6{
+	color: #51a351;
+}
+
+input[type="reset"].btn, .submit-btn {
+width: 49% !important;
+margin-bottom: 10px !important;
+padding: 4px 0px;
+}
+
+.map_contact {
+	height: 150px;
+	border: 1px solid #000;
+	margin-bottom:20px;
+}
+
+.map_canvas img, .map_contact img {
+    max-width: none !important;
+}
+
+.details input {
+	width: 75%;
+	background-color: #E8F4FD;
+	color:#003366;
+}
+
+.additional .input-prepend {
+	/*margin-right:50px;*/
+}
+
+input[type="text"]:disabled{
+	background:#dddddd !important;
+	color:#afafaf !important;
+}
+
+#formmapper {
+	width: 70%;
+	font-size: 11px;
+}
+
+.add-on {
+	width: 20% !important;
+	font-size: 12px !important;
+}
+
+#find {
+	width: 100%;
+}
+
+.popover{
+	margin-left:-80px;
+}
+
+#multiple li{
+	cursor:pointer;
+	color:#006dcc;
+}
+
+#multiple li:hover{
+	color:#51a351;
+}
+
+#multiple{
+	list-style-type:none;
+}
+
+.btn-file {
+    position: relative;
+    overflow: hidden;
+}
+.btn-file input[type=file] {
+    position: absolute;
+    top: 0;
+    right: 0;
+    min-width: 100%;
+    min-height: 100%;
+    font-size: 100px;
+    text-align: right;
+    filter: alpha(opacity=0);
+    opacity: 0;
+    outline: none;
+    background: white;
+    cursor: inherit;
+    display: block;
+}
+
+.icon-map-marker {
+  background-position: -24px -72px;
+}
+
+.input-group {
+	padding: 5px;
+	max-width: 600px;
+}
+
+.input-group-addon {
+    min-width:110px;// if you want width please write here //
+    text-align:left;
+}
+
+textarea.form-control {
+	width: 75%;
+	background-color: #E8F4FD;
+	color:#003366;
+}

@@ -109,7 +109,7 @@
 	  	  //panoramioLayer.setMap(map);
 	  	  
 		//handle for input element
-			var searchField = document.getElementById('autocomplete_searchField');
+			var searchField = document.getElementById('pac-input');
 			
 			//autocomplete search options
 			var searchOptions = {
@@ -139,6 +139,8 @@
 					}
 				}
 			});
+			
+			getProvinces();
 		}
 	
 	//put a marker in the map and attach a infowindow to display its details
@@ -185,19 +187,73 @@
 
 		}
 	
-	function addInfoWindow(marker, latLng, content) {
-		  var infoWindowOptions = {
-		    content: content,
-		    position: latLng
-		  };
-
-		  var infoWindow = new google.maps.InfoWindow(infoWindowOptions);
-
-		  google.maps.event.addListener(marker, 'click', function() {
-		    infoWindow.open(map);
-		  });
-		}
 	
+	function addInfoWindow(marker, latLng, content) {
+		var infoWindowOptions = {
+			content : content,
+			position : latLng
+		};
+
+		var infoWindow = new google.maps.InfoWindow(infoWindowOptions);
+
+		google.maps.event.addListener(marker, 'click', function() {
+			infoWindow.open(map);
+		});
+	}
+	
+	function getProvinces() {
+// 		var options = {
+// 				input: ['town'],
+// 				  types: ['(cities)'],
+// 				  componentRestrictions: {country: 'za'}
+// 				 };
+		
+// 		var service = new google.maps.places.AutocompleteService();
+
+
+	var request = {
+			address : address,
+			componentRestrictions : {
+				country : 'UK'
+			}
+		}
+		geocoder.geocode(request, function(results, status) {
+			//...
+		});
+
+		//perform request. limit results to Australia
+		// 		var request = {
+		// 		    input: 'Brisbane',
+		// 		    componentRestrictions: {country: 'au'},
+		// 		};
+
+		service.getPlacePredictions(options, callbackPlaces);
+	}
+
+	function callbackPlaces(predictions, status) {
+		if (status != google.maps.places.PlacesServiceStatus.OK) {
+			alert(status);
+			return;
+		}
+
+		for (var i = 0, prediction; prediction = predictions[i]; i++) {
+			alert(prediction.description);
+		}
+
+		// 		for (var i = 0; i < predictions.length; i++) {
+		//             googlePlacesService = new google.maps.places.PlacesService(document.getElementById("q"));
+		//             googlePlacesService.getDetails({
+		//                 reference: predictions[i].reference
+		//             }, function(details, status){
+		//                 if(details){
+		//                     console.log(details.geometry.location.toString());
+		//                 }
+		//             });
+		//             console.log(predictions[i].description);
+		//         }
+
+	}
+
 	google.maps.event.addDomListener(window, 'load', initMap);
 </script>
 </head>
@@ -211,7 +267,7 @@
 				
 			<div class="Nav">
 			 	<a href='<spring:url value="/find.html"/>' class="HeaderText">Find</a>
-			 	<a href='<spring:url value="/upload.html"/>' class="HeaderText">Upload</a>
+			 	<a href='<spring:url value="/upload.html"/>' class="HeaderText">List your property</a>
 			 	<a href='<spring:url value="/contact.html"/>' class="HeaderText">Contact</a>
 			 	<security:authorize access="! isAuthenticated()">
 			 		<a href='<spring:url value="/login.html"/>' class="HeaderText">Login</a>
@@ -228,9 +284,15 @@
 		</div> <!--  End of Zaffa Header -->
 	</div>
 	
-	<div id="leon"> 
-	<div id="searchDiv">
-			<input id="autocomplete_searchField" type="text" size="40"  placeholder="Search for Places"></input>
+	<div class="container">
+		<div id="leon"> 
+			<div class="form-group">
+				<div class="col-sm-10">
+					<div id="searchDiv">
+						<input id="pac-input" type="text" size="40"  placeholder="Search for Places"></input>
+					</div>
+				</div>
+			</div>
 		</div>
 	</div>
 	<div id="map_canvas"></div>

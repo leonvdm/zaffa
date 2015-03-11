@@ -11,6 +11,10 @@
     <put-attribute name="footer" value="/WEB-INF/layout/footer.jsp" />
   </definition>
   
+  <definition name="uploadForm" template="/WEB-INF/layout/upload.jsp">
+    <put-attribute name="footer" value="/WEB-INF/layout/footer.jsp" />
+  </definition>
+  
   <definition name="index" extends="common">
     <put-attribute name="title" value="Industrial property" />
     <put-attribute name="body" value="/WEB-INF/jsp/index.jsp" />
@@ -53,7 +57,7 @@
     <put-attribute name="current" value="login"/>
   </definition>
   
-   <definition name="upload" extends="common">
+   <definition name="upload" extends="uploadForm">
     <put-attribute name="title" value="Upload a property" />
     <put-attribute name="body" value="/WEB-INF/jsp/upload.jsp" />
     <put-attribute name="current" value="upload"/>
