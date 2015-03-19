@@ -5,12 +5,12 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
-public class FindController {
+public class HomeController {
 	
-	static Logger log = Logger.getLogger(FindController.class.getName());
+	static Logger log = Logger.getLogger(HomeController.class.getName());
 	
-	@RequestMapping("/find")
-	public String find() {
-		return "find";
+	@RequestMapping("/home")
+	public String home() {
+		return "home";
 	}
 }
