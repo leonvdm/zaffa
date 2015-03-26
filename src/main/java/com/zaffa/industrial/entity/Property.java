@@ -4,6 +4,7 @@ import java.sql.Date;
 import java.util.List;
 
 import javax.persistence.CascadeType;
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
@@ -13,6 +14,10 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.validation.constraints.Size;
+
+import org.hibernate.annotations.Type;
+
+//import com.vividsolutions.jts.geom.Point;
 
 @Entity
 public class Property {
@@ -46,6 +51,14 @@ public class Property {
 	
 	private Double pricePerSqm;
 	
+//	@Column(name="Point")
+//	@Type(type="org.hibernate.spatial.GeometryType")
+//    private Point point;
+	
+	private Double longitude;
+	
+	private Double lattitude;
+	
 	@Enumerated(EnumType.STRING)
 	private PropertyType type;
 	
@@ -66,9 +79,33 @@ public class Property {
 	public void setId(Integer id) {
 		this.id = id;
 	}
+	
+//	public Point getPoint() {
+//		return point;
+//	}
+//
+//	public void setPoint(Point point) {
+//		this.point = point;
+//	}
 
 	public PropertyType getType() {
 		return type;
+	}
+
+	public Double getLongitude() {
+		return longitude;
+	}
+
+	public void setLongitude(Double longitude) {
+		this.longitude = longitude;
+	}
+
+	public Double getLattitude() {
+		return lattitude;
+	}
+
+	public void setLattitude(Double lattitude) {
+		this.lattitude = lattitude;
 	}
 
 	public void setType(PropertyType type) {

@@ -14,6 +14,7 @@ import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
+import javax.persistence.Table;
 import javax.validation.constraints.Size;
 
 import org.hibernate.validator.constraints.Email;
@@ -21,6 +22,7 @@ import org.hibernate.validator.constraints.Email;
 import com.zaffa.industrial.annotation.UniqueUsername;
 
 @Entity
+@Table(name = "app_user")
 public class User {
 
 	@Id
