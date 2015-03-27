@@ -46,8 +46,9 @@
 <!--     			</div> -->
 <!--   			</div> -->
     	</form>
-    <div class="mapwrapper">
-    <div id="map_home"></div>
+    <div class="container-fluid">
+    
+    	<div id="map_home"></div>
    </div>
     
 <script type="text/javascript">
@@ -253,16 +254,16 @@
 		});
 		
 		<c:forEach items="${properties}" var="property">
-		var myLatlng = new google.maps.LatLng(${property.lattitude},${property.longitude});
+			var myLatlng = new google.maps.LatLng(${property.lattitude},${property.longitude});
 		
-		var marker = new google.maps.Marker({
-			map: map,
-			position: myLatlng,
-			icon: placeIcon
-		});
+// 			var marker = new google.maps.Marker({
+// 				map: map,
+// 				position: myLatlng,
+// 				icon: placeIcon
+// 			});
  	
- 		createMarker(myLatlng);
-	</c:forEach>
+ 			createMarker(myLatlng);
+		</c:forEach>
 		
 		
 		map.setCenter(result.geometry.location);

@@ -16,6 +16,8 @@
 	<link href="<spring:url value="/resources/css/bootstrap.css" />" rel="stylesheet">
 	<link href="<spring:url value="/resources/css/style.css" />" rel="stylesheet">
 	
+	
+	
 	<title><tiles:getAsString name="title"></tiles:getAsString></title>
 	
 	<!--[if lt IE 9]>
