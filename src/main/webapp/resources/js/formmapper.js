@@ -399,6 +399,8 @@
         this.update(place);
       }
     }
+    
+    
   });
 
   // A plugin wrapper around the constructor.
@@ -436,7 +438,11 @@
     }
   };
   
+ 
+  
 })( jQuery, window, document );
+
+
 
   function findMyLocation(theObj){
 	  if (navigator.geolocation) {
@@ -445,11 +451,25 @@
 				$(theObj).trigger("geocode");
 			  });
 		   }
+//	  drawMarkers();
   }
+  
+  function drawMarkers(lat, long) {
+	  //get all propery coordinates
+	  var myLatlng = new google.maps.LatLng(lat,long);
+	  var marker = new google.maps.Marker({
+	      position: myLatlng,
+	      map: map,
+	      title: 'Hello World!'
+	  });
+  }
+ 
   
   $(document).ready(function() {
 	  $('a[href="' + this.location.pathname + '"]').parent().addClass('active');
   });
+  
+	
 
   
 

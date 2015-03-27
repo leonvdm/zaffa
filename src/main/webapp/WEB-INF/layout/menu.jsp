@@ -2,7 +2,7 @@
 <%@ taglib uri="http://www.springframework.org/security/tags" prefix="security"%>
 <%@ taglib uri="http://tiles.apache.org/tags-tiles-extras" prefix="tilesx"%>
 
-<div class="zaffaHeader">
+<div id="zaffaHeader">
 <nav id="nav-main" class="navbar navbar-default">
   <div class="container-fluid">
     <div class="navbar-header">

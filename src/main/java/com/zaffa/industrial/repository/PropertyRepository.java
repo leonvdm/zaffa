@@ -10,4 +10,6 @@ import com.zaffa.industrial.entity.User;
 public interface PropertyRepository extends JpaRepository<Property, Integer>{
 
 	List<Property> findByUploader(User uploader);
+	
+	List<Property> findAll();
 }

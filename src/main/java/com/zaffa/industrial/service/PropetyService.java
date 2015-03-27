@@ -1,5 +1,7 @@
 package com.zaffa.industrial.service;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.method.P;
 import org.springframework.security.access.prepost.PreAuthorize;
@@ -35,6 +37,10 @@ public class PropetyService {
 
 	public Property findOne(int id) {
 		return propertyRepository.findOne(id);
+	}
+	
+	public List<Property> findAll() {
+		return propertyRepository.findAll();
 	}
 
 

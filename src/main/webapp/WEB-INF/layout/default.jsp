@@ -14,7 +14,7 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	
 	<link href="<spring:url value="/resources/css/bootstrap.css" />" rel="stylesheet">
-	<link href="<spring:url value="/resources/css/custom.css" />" rel="stylesheet">
+	<link href="<spring:url value="/resources/css/style.css" />" rel="stylesheet">
 	
 	<title><tiles:getAsString name="title"></tiles:getAsString></title>
 	

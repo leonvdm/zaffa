@@ -38,20 +38,28 @@
 	</properties>
 
 	<dependencies>
-	
-<!-- 		<dependency> -->
-<!-- 			<groupId>postgresql</groupId> -->
-<!-- 			<artifactId>postgresql</artifactId> -->
-<!-- 			<version>9.1-901-1.jdbc4</version> -->
-<!-- 		</dependency> -->
 
-<!-- the postgresql driver -->
-        <dependency>
-            <groupId>postgresql</groupId>
-            <artifactId>postgresql</artifactId>
-            <version>8.4-701.jdbc3</version>
-        </dependency>
-		
+		<dependency>
+			<groupId>org.codehaus.jackson</groupId>
+			<artifactId>jackson-mapper-asl</artifactId>
+			<version>1.9.13</version>
+		</dependency>
+
+
+
+		<!-- <dependency> -->
+		<!-- <groupId>postgresql</groupId> -->
+		<!-- <artifactId>postgresql</artifactId> -->
+		<!-- <version>9.1-901-1.jdbc4</version> -->
+		<!-- </dependency> -->
+
+		<!-- the postgresql driver -->
+		<dependency>
+			<groupId>postgresql</groupId>
+			<artifactId>postgresql</artifactId>
+			<version>8.4-701.jdbc3</version>
+		</dependency>
+
 		<dependency>
 			<groupId>commons-dbcp</groupId>
 			<artifactId>commons-dbcp</artifactId>
@@ -109,12 +117,12 @@
 			<artifactId>hibernate-entitymanager</artifactId>
 			<version>4.3.4.Final</version>
 		</dependency>
-		
-<!-- 		<dependency> -->
-<!--         	<groupId>org.hibernate</groupId> -->
-<!--             <artifactId>hibernate-spatial</artifactId> -->
-<!--             <version>4.3</version> -->
-<!--    		</dependency> -->
+
+		<!-- <dependency> -->
+		<!-- <groupId>org.hibernate</groupId> -->
+		<!-- <artifactId>hibernate-spatial</artifactId> -->
+		<!-- <version>4.3</version> -->
+		<!-- </dependency> -->
 
 		<dependency>
 			<groupId>org.apache.tiles</groupId>
@@ -270,18 +278,18 @@
 			<scope>test</scope>
 		</dependency>
 	</dependencies>
-	
-<!-- 	<repositories> -->
-	
-<!-- 		<repository> -->
-<!-- 			<id>OSGEO GeoTools repo</id> -->
-<!-- 			<url>http://download.osgeo.org/webdav/geotools</url> -->
-<!-- 		</repository> -->
-<!-- 		<repository> -->
-<!-- 			<id>Hibernate Spatial repo</id> -->
-<!-- 			<url>http://www.hibernatespatial.org/repository</url> -->
-<!-- 		</repository> -->
 
-<!-- </repositories> -->
+	<!-- <repositories> -->
+
+	<!-- <repository> -->
+	<!-- <id>OSGEO GeoTools repo</id> -->
+	<!-- <url>http://download.osgeo.org/webdav/geotools</url> -->
+	<!-- </repository> -->
+	<!-- <repository> -->
+	<!-- <id>Hibernate Spatial repo</id> -->
+	<!-- <url>http://www.hibernatespatial.org/repository</url> -->
+	<!-- </repository> -->
+
+	<!-- </repositories> -->
 
 </project>

@@ -85,6 +85,8 @@ public class InitDbService {
 			mercedes.setIsAvailable(true);
 			mercedes.setPricePerSqm(1000d);
 			mercedes.setUploader(userAdmin);
+			mercedes.setLattitude(-33.8904179);
+			mercedes.setLongitude(18.51657320000004);
 			propertyRepository.save(mercedes);
 
 			Property absa = new Property();
@@ -95,6 +97,8 @@ public class InitDbService {
 			absa.setIsAvailable(true);
 			absa.setPricePerSqm(2000d);
 			absa.setUploader(userAdmin);
+			absa.setLattitude(-33.8889364);
+			absa.setLongitude(18.51798389999999);
 			propertyRepository.save(absa);
 
 			Photo one = new Photo();
