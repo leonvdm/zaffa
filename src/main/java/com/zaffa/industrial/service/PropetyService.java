@@ -1,5 +1,7 @@
 package com.zaffa.industrial.service;
 
+import java.sql.Date;
+import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -7,6 +9,7 @@ import org.springframework.security.access.method.P;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Service;
 
+import com.zaffa.industrial.dto.PropertyDTO;
 import com.zaffa.industrial.entity.Property;
 import com.zaffa.industrial.entity.User;
 import com.zaffa.industrial.repository.PropertyRepository;
@@ -48,6 +51,39 @@ public class PropetyService {
 	public void delete(@P("property") Property prop) {
 		propertyRepository.delete(prop);
 		
+	}
+
+	public List<PropertyDTO> findAllDTOs() {
+		List<Property> props = findAll();
+		List<PropertyDTO> dtos = new ArrayList<PropertyDTO>();
+		PropertyDTOMapper mapper = new PropertyDTOMapper();
+		
+		for (Property property : props) {
+			dtos.add(mapper.mapPropertyToDTO(property));
+		}
+		
+		return dtos;		
+	}
+	
+	class PropertyDTOMapper {
+		private PropertyDTO mapPropertyToDTO(Property property) {
+			PropertyDTO dto = new PropertyDTO();
+			dto.setId(property.getId());
+			dto.setName(property.getName());
+			dto.setStreet_number(property.getStreet_number());
+			dto.setRoute(property.getRoute());
+			dto.setLocality(property.getLocality());
+			dto.setProvince(property.getProvince());
+			dto.setPostal_code(property.getPostal_code());
+			dto.setCountry(property.getCountry());
+			dto.setSqm(property.getSqm());
+			dto.setIsAvailable(property.getIsAvailable());
+			dto.setAvailableDate(property.getAvailableDate());
+			dto.setPricePerSqm(property.getPricePerSqm());
+			dto.setLongitude(property.getLongitude());
+			dto.setLattitude(property.getLattitude());
+			return dto;
+		}
 	}
 
 	

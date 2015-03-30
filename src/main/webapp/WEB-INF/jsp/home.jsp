@@ -7,6 +7,7 @@
     
 		
 		<form id = "Address" >
+		<fieldset class="details">
 			<div class="form-group">
 				<label for="autocomplete">Please enter the address</label>
       			<input type="text" class="form-control" id="autocomplete" onFocus="geolocate()" placeholder="Enter addresss">
@@ -45,11 +46,14 @@
 <!--       				<button type="submit" id="formButton" class="btn btn-default">Upload</button> -->
 <!--     			</div> -->
 <!--   			</div> -->
+			</fieldset>
     	</form>
     <div class="container-fluid">
     
     	<div id="map_home"></div>
    </div>
+   
+   <div class="properties"></div>
     
 <script type="text/javascript">
 	<!-- Map creation is here -->
@@ -229,6 +233,27 @@
 		while(markers[0]) {
 			markers.pop().setMap(null);
 		}
+		
+		$.ajax({
+			type: "GET",
+			url: "<spring:url value='/property.json'/>",
+			contentType: "application/json; charset=utf-8",
+	         dataType: "json",
+	         success: function (data, status, jqXHR) {
+	             $.each(data, function(index, element) {
+	            	 $('body').append($('<div>', {
+	            		 text: element.name
+	            	 }));
+	            	 var myLatlng = new google.maps.LatLng(element.lattitude,element.longitude);
+	            	 
+	      			createMarker(myLatlng);
+	             });
+	         },
+
+	         error: function (jqXHR, status) {
+	             // error handler
+	         }
+		});
 			
 		//get the PlaceResult object
 		var place = autocomplete.getPlace();
@@ -247,14 +272,14 @@
 			scaledSize: new google.maps.Size(30, 30)
 		};
 		
-		var marker = new google.maps.Marker({
-			map: map,
-			position: result.geometry.location,
-			icon: placeIcon
-		});
+// 		var marker = new google.maps.Marker({
+// 			map: map,
+// 			position: result.geometry.location,
+// 			icon: placeIcon
+// 		});
 		
-		<c:forEach items="${properties}" var="property">
-			var myLatlng = new google.maps.LatLng(${property.lattitude},${property.longitude});
+// 		<c:forEach items="${properties}" var="property">
+// 			var myLatlng = new google.maps.LatLng(${property.lattitude},${property.longitude});
 		
 // 			var marker = new google.maps.Marker({
 // 				map: map,
@@ -262,23 +287,23 @@
 // 				icon: placeIcon
 // 			});
  	
- 			createMarker(myLatlng);
-		</c:forEach>
+//  			createMarker(myLatlng);
+// 		</c:forEach>
 		
 		
 		map.setCenter(result.geometry.location);
 		map.setZoom(16);
 
 		//infowindow stuff
-		google.maps.event.addListener(marker, 'click', function() {
-			//debugger;
-			var popupContent = '<b>Name: </b> ' + result.name + '<br/>' + '<b>Vicinity: </b>' + result.vicinity;
-			popup.setContent(popupContent);
-			popup.open(map, this);
-		});
+// 		google.maps.event.addListener(marker, 'click', function() {
+// 			//debugger;
+// 			var popupContent = '<b>Name: </b> ' + result.name + '<br/>' + '<b>Vicinity: </b>' + result.vicinity;
+// 			popup.setContent(popupContent);
+// 			popup.open(map, this);
+// 		});
 	
-		//add the latest drawn marker to the markers array
-		markers.push(marker);
+// 		//add the latest drawn marker to the markers array
+// 		markers.push(marker);
 	}
 	
 	

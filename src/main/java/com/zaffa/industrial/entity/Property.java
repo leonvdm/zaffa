@@ -4,7 +4,6 @@ import java.sql.Date;
 import java.util.List;
 
 import javax.persistence.CascadeType;
-import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
@@ -14,8 +13,6 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.validation.constraints.Size;
-
-import org.hibernate.annotations.Type;
 
 //import com.vividsolutions.jts.geom.Point;
 
@@ -28,8 +25,6 @@ public class Property {
 	
 	@Size(min=3, message = "Name must be at least 3 characters!")
 	private String name;
-	
-	private String searchString;
 	
 	private String street_number;
 	
@@ -61,9 +56,6 @@ public class Property {
 	
 	@Enumerated(EnumType.STRING)
 	private PropertyType type;
-	
-	@OneToMany(mappedBy="leaseProperty")
-	private List<LeaseContract> leaseContracts;
 	
 	@OneToMany(mappedBy="property", cascade=CascadeType.REMOVE)
 	private List<Photo> photos;
@@ -152,14 +144,6 @@ public class Property {
 		this.pricePerSqm = pricePerSqm;
 	}
 
-	public List<LeaseContract> getLeaseContracts() {
-		return leaseContracts;
-	}
-
-	public void setLeaseContracts(List<LeaseContract> leaseContracts) {
-		this.leaseContracts = leaseContracts;
-	}
-
 	public List<Photo> getPhotos() {
 		return photos;
 	}
@@ -174,14 +158,6 @@ public class Property {
 
 	public void setUploader(User uploader) {
 		this.uploader = uploader;
-	}
-
-	public String getSearchString() {
-		return searchString;
-	}
-
-	public void setSearchString(String searchString) {
-		this.searchString = searchString;
 	}
 
 	public String getStreet_number() {

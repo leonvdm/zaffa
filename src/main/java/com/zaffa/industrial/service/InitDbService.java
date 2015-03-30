@@ -18,7 +18,6 @@ import com.zaffa.industrial.entity.Role;
 import com.zaffa.industrial.entity.RoleType;
 import com.zaffa.industrial.entity.User;
 import com.zaffa.industrial.repository.CompanyRepository;
-import com.zaffa.industrial.repository.LeaseContractRepository;
 import com.zaffa.industrial.repository.PhotoRepository;
 import com.zaffa.industrial.repository.PropertyRepository;
 import com.zaffa.industrial.repository.RoleRepository;
@@ -36,9 +35,6 @@ public class InitDbService {
 
 	@Autowired
 	private CompanyRepository companyRepository;
-
-	@Autowired
-	private LeaseContractRepository leaseContractRepository;
 
 	@Autowired
 	private PhotoRepository photoRepository;
