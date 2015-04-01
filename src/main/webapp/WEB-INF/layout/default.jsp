@@ -3,44 +3,78 @@
 
 <%@ taglib uri="http://tiles.apache.org/tags-tiles" prefix="tiles"%>
 <%@ taglib uri="http://www.springframework.org/tags" prefix="spring"%>
-<%@ taglib uri="http://www.springframework.org/security/tags" prefix="security"%>
-<%@ taglib uri="http://tiles.apache.org/tags-tiles-extras" prefix="tilesx"%>
+<%@ taglib uri="http://www.springframework.org/security/tags"
+	prefix="security"%>
+<%@ taglib uri="http://tiles.apache.org/tags-tiles-extras"
+	prefix="tilesx"%>
 
 <!DOCTYPE html>
 <html>
 <head>
-	<meta charset="utf-8">
-	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	
-	<link href="<spring:url value="/resources/css/bootstrap.css" />" rel="stylesheet">
-	<link href="<spring:url value="/resources/css/style.css" />" rel="stylesheet">
-	
-	
-	
-	<title><tiles:getAsString name="title"></tiles:getAsString></title>
-	
-	<!--[if lt IE 9]>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<%-- <link href="<spring:url value="/resources/css/bootstrap.css" />" rel="stylesheet"> --%>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
+<link href="<spring:url value="/resources/css/style.css" />" rel="stylesheet">
+
+
+
+<title><tiles:getAsString name="title"></tiles:getAsString></title>
+
+<!--[if lt IE 9]>
       <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
       <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
     <![endif]-->
 </head>
-<body>	
-<script src="http://maps.googleapis.com/maps/api/js?sensor=false&amp;libraries=places"></script>
-    <script src="//ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
-    <script src="http://ajax.aspnetcdn.com/ajax/jquery.validate/1.13.1/jquery.validate.js"></script>
-    
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
-    <script src="<spring:url value="/resources/js/formmapper.js" />"></script>
-    
+<body>
+	<script src="http://maps.googleapis.com/maps/api/js?sensor=false&amp;libraries=places"></script>
+	<script src="//ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+	<script src="http://ajax.aspnetcdn.com/ajax/jquery.validate/1.13.1/jquery.validate.js"></script>
+	<script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.3/jquery-ui.min.js"></script>
+	<!-- The jQuery UI widget factory, can be omitted if jQuery UI is already included -->
+	<script src="/resources/js/fileUpload/jquery.ui.widget.js"></script>
+	<!-- The Templates plugin is included to render the upload/download listings -->
+	<script src="http://blueimp.github.io/JavaScript-Templates/js/tmpl.min.js"></script>
+	<!-- The Load Image plugin is included for the preview images and image resizing functionality -->
+	<script src="/resources/js/fileUpload/load-image.all.min.js"></script>
+	<!-- The Canvas to Blob plugin is included for image resizing functionality -->
+	<script src="http://blueimp.github.io/JavaScript-Canvas-to-Blob/js/canvas-to-blob.min.js"></script>
+	<!-- Bootstrap JS is not required, but included for the responsive demo navigation -->
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+	<!-- blueimp Gallery script -->
+	<script src="http://blueimp.github.io/Gallery/js/jquery.blueimp-gallery.min.js"></script>
+	<!-- The Iframe Transport is required for browsers without support for XHR file uploads -->
+	<script src="/resources/js/fileUpload/jquery.iframe-transport.js"></script>
+	<!-- The basic File Upload plugin -->
+	<script src="/resources/js/fileUpload/jquery.fileupload.js"></script>
+	<!-- The File Upload processing plugin -->
+	<script src="/resources/js/fileUpload/jquery.fileupload-process.js"></script>
+	<!-- The File Upload image preview & resize plugin -->
+	<script src="/resources/js/fileUpload/jquery.fileupload-image.js"></script>
+	<!-- The File Upload audio preview plugin -->
+	<script src="/resources/js/fileUpload/jquery.fileupload-audio.js"></script>
+	<!-- The File Upload video preview plugin -->
+	<script src="/resources/js/fileUpload/jquery.fileupload-video.js"></script>
+	<!-- The File Upload validation plugin -->
+	<script src="/resources/js/fileUpload/jquery.fileupload-validate.js"></script>
+	<!-- The File Upload user interface plugin -->
+	<script src="/resources/js/fileUpload/jquery.fileupload-ui.js"></script>
+	<!-- The main application script -->
+	<script src="/resources/js/fileUpload/main.js"></script>
+
+
+	<script src="<spring:url value="/resources/js/formmapper.js" />"></script>
+
 	<!-- Menu Page -->
 	<tiles:insertAttribute name="menu" />
-	
+
 	<!-- Body Page -->
 	<tiles:insertAttribute name="body" />
-	
+
 	<!-- Footer Page -->
 	<tiles:insertAttribute name="footer" />
-	
+
 </body>
 </html>

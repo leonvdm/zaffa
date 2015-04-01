@@ -48,10 +48,10 @@
 <!--   			</div> -->
 			</fieldset>
     	</form>
-    <div class="container-fluid">
+<!--     <div class="container-fluid"> -->
     
     	<div id="map_home"></div>
-   </div>
+<!--    </div> -->
    
    <div class="properties"></div>
     
