@@ -7,8 +7,9 @@
 	<div class="container-fluid">
 		<div class="row">
 			<div class="col-md-2">
-      
-          		<h3>Property Address</h3>
+      		<div class="panel panel-info">
+      			<div class="panel-heading">Type property address here</div>
+				<div class="panel-body">
             	<form>
             		<fieldset class="details">
             			<div class="input-group">
@@ -20,15 +21,18 @@
               		
               			</div>
               		</fieldset>
-<!--               	<span id="helpBlock" class="help-block">It could be just about anything: a full address, a city, just the zip/postal code, or even the name of a place.</span> -->
-              	
             	</form>
+            	</div> <!-- end of panel body -->
+            	</div> <!-- end of panel -->
      
           
+          <div class="panel panel-info">
+			<div class="panel-heading">Address Details(autocompletes)</div>
+			<div class="panel-body">
            		<div>
             		<form>
             			<fieldset class="details">
-                			<h3>Address Details</h3>
+                			
                 			<div class="input-group">
                   				<span class="input-group-addon" id="sizing-addon1">Number</span>
                   				<input type="text" class="form-control" placeholder="Street number" name="street_number" aria-describedby="sizing-addon1">
@@ -42,7 +46,7 @@
                   				<input type="text" class="form-control" placeholder="City" name="locality" aria-describedby="basic-addon3">
                 			</div>
 			                <div class="input-group">
-			                  <span class="input-group-addon" id="basic-addon4">State</span>
+			                  <span class="input-group-addon" id="basic-addon4">Province</span>
 			                  <input type="text" class="form-control" placeholder="State" name="administrative_area_level_1" aria-describedby="basic-addon4">
 			                </div>
 			                <div class="input-group">
@@ -64,47 +68,66 @@
 			              </fieldset>
             		</form>  
           		</div>
-        	</div> <!-- col-md-4  -->
+          		</div> <!-- end of panel body -->
+          	</div> <!-- end of panel -->
+        	</div> <!-- col-md-2  -->
         
         	<div class="col-md-10">
-          		<h3>Google Map Display</h3>
-          		<div class="map_canvas"></div>
-       		</div>
+        		<div class="panel panel-info">
+          			<div class="panel-heading">Google Map Display</div>
+      			 	<div class="panel-body">
+          				<div class="map_canvas"></div>
+          			</div>
+          		</div> <!-- end of panel -->
+       		</div><!-- end of column -->
       	</div> <!--  end of row -->
       	<div class="row">
 			<div class="col-md-2">
-      		
-      			<h3>Property Description and Price</h3>
+      		<div class="panel panel-info"">
+      			<div class="panel-heading">Property Details</div>
+      			 <div class="panel-body">
 				<form>
 					<fieldset class="details">
 						<div class="input-group">
             				<span class="input-group-addon" id="sizing-addon10">Name</span>
-                			<input type="text" class="form-control" placeholder="Property Name" name="propety_name" aria-describedby="sizing-addon1">
+                			<input type="text" class="form-control" placeholder="Property Name" name="propety_name" aria-describedby="sizing-addon10">
            				</div>
            				<div class="input-group">
-            				<span class="input-group-addon" id="sizing-addon11">Price(R)</span>
-                			<input type="text" class="form-control" placeholder="Price per square meter" name="propety_price" aria-describedby="sizing-addon11">
+            				<span class="input-group-addon" id="sizing-addon11">Price(R/m<sup>2</sup>)</span>
+                			<input type="text" class="form-control" placeholder="Rand per square meter" name="propety_price" aria-describedby="sizing-addon11">
            				</div>
 						<div class="input-group">
-            				<span class="input-group-addon" id="sizing-addon13">Description</span>
-                			<textarea class="form-control" placeholder="Description" name="propety_description" aria-describedby="sizing-addon13"></textarea>
+            				<span class="input-group-addon" id="sizing-addon12">Description</span>
+                			<textarea class="form-control" placeholder="Description" name="propety_description" aria-describedby="sizing-addon12"></textarea>
+           				</div>
+           				<div class="input-group">
+            				<span class="input-group-addon" id="sizing-addon13">Plot size(m<sup>2</sup>)</span>
+                			<input type="text" class="form-control" placeholder="Plot size in square meter" name="plot_size" aria-describedby="sizing-addon13">
+           				</div>
+           				<div class="input-group">
+            				<span class="input-group-addon" id="sizing-addon14">Structure size(m<sup>2</sup>)</span>
+                			<input type="text" class="form-control" placeholder="Building size in square meter" name="building_size" aria-describedby="sizing-addon14">
+           				</div>
+           				<div class="input-group">
+            				<span class="input-group-addon" id="sizing-addon15">Year built</span>
+                			<input type="text" class="form-control" placeholder="Year building was built" name="building_date" aria-describedby="sizing-addon15">
            				</div>
 			
 					</fieldset>
 				</form>
-      
+				</div>
+      		</div>
        			<h3>Property Details</h3>
        			<form>
-         			Land size in square meter
-         			Building size in sqaure meter
-         			Year built
          
        			</form>
 	
 			</div> <!--  end of col -->
-			<div class="col-md-8">
-				<h3>Upload Property fotos</h3>
-	    		<br>
+			
+			<div class="col-md-10">
+			<div class="panel panel-info">
+          			<div class="panel-heading">Upload Property Images</div>
+	    		 	<div class="panel-body">
     			<!-- The file upload form used as target for the file upload widget -->
     			<form id="fileupload" action='<spring:url value="/upload"/>' method="POST" enctype="multipart/form-data">
         			<!-- Redirect browsers with JavaScript disabled to the origin page -->
@@ -150,35 +173,37 @@
         				<tbody class="files"></tbody>
         			</table>
         		</form>
+        		</div>
+        		</div>
         	
-		    	<br>
-    			<div class="panel panel-default">
-        			<div class="panel-heading">
-            			<h3 class="panel-title">Upload Notes</h3>
-        			</div>
+<!-- 		    	<br> -->
+<!--     			<div class="panel panel-default"> -->
+<!--         			<div class="panel-heading"> -->
+<!--             			<h3 class="panel-title">Upload Notes</h3> -->
+<!--         			</div> -->
         				
-        			<div class="panel-body">
-            			<ul>
-                			<li>The maximum file size for uploads is <strong>5 MB</strong></li>
-                			<li>Only image files (<strong>JPG, GIF, PNG</strong>) are allowed</li>
-            			</ul>
-        			</div>
-        		</div> <!-- end of panel -->
+<!--         			<div class="panel-body"> -->
+<!--             			<ul> -->
+<!--                 			<li>The maximum file size for uploads is <strong>5 MB</strong></li> -->
+<!--                 			<li>Only image files (<strong>JPG, GIF, PNG</strong>) are allowed</li> -->
+<!--             			</ul> -->
+<!--         			</div> -->
+<!--         		</div> end of panel -->
 		
 				<!-- The blueimp Gallery widget -->
-				<div id="blueimp-gallery" class="blueimp-gallery blueimp-gallery-controls" data-filter=":even">
-    				<div class="slides"></div>
-    					<h3 class="title"></h3>
-    					<a class="prev">‹</a>
-    					<a class="next">›</a>
-    					<a class="close">×</a>
-    					<a class="play-pause"></a>
-    					<ol class="indicator"></ol>
-					</div><!-- end of slides -->
-				</div> <!-- end of gallery -->
+<!-- 				<div id="blueimp-gallery" class="blueimp-gallery blueimp-gallery-controls" data-filter=":even"> -->
+<!--     				<div class="slides"></div> -->
+<!--     					<h3 class="title"></h3> -->
+<!--     					<a class="prev">‹</a> -->
+<!--     					<a class="next">›</a> -->
+<!--     					<a class="close">×</a> -->
+<!--     					<a class="play-pause"></a> -->
+<!--     					<ol class="indicator"></ol> -->
+<!-- 					</div>end of slides -->
+<!-- 				</div> end of gallery -->
 			</div><!--  end of col-8 -->
 		</div> <!-- end of row -->
-				
+	</div> 
 			
 <!-- The template to display files available for upload -->
 <script id="template-upload" type="text/x-tmpl">

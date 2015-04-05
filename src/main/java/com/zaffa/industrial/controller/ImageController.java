@@ -10,7 +10,7 @@ public class ImageController {
 	
 	static Logger logger = LoggerFactory.getLogger(ImageController.class);
 	
-	@RequestMapping("/upload") 
+	@RequestMapping("/uploads") 
 	public void upload() {
 		
 	}

@@ -52,30 +52,31 @@
 width: 131px;
 	height: 65px;
 	z-index: 20;
-/* 	left: 10px; */
-/* 	top: 5px; */
-/* 	display: block; */
-	padding: 0px;
+}
+
+.navbar-brand {
+  margin-left: -15px;
+ padding: 0px;
 }
 
 .navbar-nav li a {
- line-height: 65px;
+ line-height: 30px;
 }
 
 .map_canvas { 
 	width: 100%; 
-	height: 440px; 
-	margin: 10px 0px;
-	border: 1px solid #000;
+	height: 457px; 
+	margin: 0px;
 	
 }
 
 #map_home { 
-width: auto; 
+	width: auto; 
+	padding-right: 15px;
 	height: auto; 
 	margin: 0px 0px 0px 0px;
-	margin-right: 0px;
-	border: 0px solid #000;
+	margin-right: 15px;
+	border: 1px solid #000;
 	
 }
 
@@ -94,8 +95,9 @@ h1,h2,h3{
 }
 
 .input-group {
-	padding: 5px;
-	max-width: 350px;
+  padding: 5px;
+  max-width: 350px;
+  background-color: azure;
 }
 
 .navbar {
@@ -193,4 +195,36 @@ textarea.form-control {
   .files canvas {
     max-width: 100%;
   }
+}
+
+.panel-body {
+  padding: 0px;
+}
+
+.col-md-2 {
+  width: 25.666667%;
+}
+
+.col-md-10 {
+  width: 74.666667%;
+}
+
+.col-md-10 {
+  width: 74.333333%;
+}
+
+.container-fluid {
+  padding-top: 15px;
+ 
+}
+
+.AddressForm {
+/* 	border: 1px solid #000; */
+}
+
+.zaffaHeader { height: 60px; }
+
+.panel-body {
+  padding: 0px;
+  background-color: azure;
 }

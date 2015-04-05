@@ -4,9 +4,7 @@
 
 <%@ include file="../layout/taglib.jsp" %>
 
-    
-		
-		<form id = "Address" >
+		<form id = "Address" class="AddressForm">
 		<fieldset class="details">
 			<div class="form-group">
 				<label for="autocomplete">Please enter the address</label>
@@ -48,13 +46,14 @@
 <!--   			</div> -->
 			</fieldset>
     	</form>
+    	
 <!--     <div class="container-fluid"> -->
-    
-    	<div id="map_home"></div>
+    	
+    		<div id="map_home"></div>
+ 
 <!--    </div> -->
    
    <div class="properties"></div>
-    
 <script type="text/javascript">
 	<!-- Map creation is here -->
 	
