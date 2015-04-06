@@ -1,210 +1,263 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
-<%@ taglib uri="http://www.springframework.org/security/tags" prefix="security"%>
-<%@ taglib uri="http://tiles.apache.org/tags-tiles-extras" prefix="tilesx"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8"%>
+<%@ taglib uri="http://www.springframework.org/security/tags"
+	prefix="security"%>
+<%@ taglib uri="http://tiles.apache.org/tags-tiles-extras"
+	prefix="tilesx"%>
 
-<%@ include file="../layout/taglib.jsp" %>
-	
-	<div class="container-fluid">
-		<div class="row">
-			<div class="col-md-2">
-      		<div class="panel panel-info">
-      			<div class="panel-heading">Type property address here</div>
-				<div class="panel-body">
-            	<form>
-            		<fieldset class="details">
-            			<div class="input-group">
-            				<span class="input-group-addon" id="sizing-addon">Find</span>             
-              				<input class="form-control" data-toggle="popover" data-placement="right" data-content="Continue typing until you see your location in the list. Click your location and the form will be filled in for you." data-original-title="Let's find your location!" id="formmapper" type="text" placeholder="Just start typing here..." aria-describedby="sizing-addon"/>
-<!--               		<span class="input-group-btn"> -->
-<!--               			<button id="find" class="btn btn-success" type="button"><i class="icon-map-marker icon-white"></i> Find!</button> -->
-<!--               		</span> -->
-              		
-              			</div>
-              		</fieldset>
-            	</form>
-            	</div> <!-- end of panel body -->
-            	</div> <!-- end of panel -->
-     
-          
-          <div class="panel panel-info">
-			<div class="panel-heading">Address Details(autocompletes)</div>
-			<div class="panel-body">
-           		<div>
-            		<form>
-            			<fieldset class="details">
-                			
-                			<div class="input-group">
-                  				<span class="input-group-addon" id="sizing-addon1">Number</span>
-                  				<input type="text" class="form-control" placeholder="Street number" name="street_number" aria-describedby="sizing-addon1">
-                			</div>
-                			<div class="input-group">
-                  				<span class="input-group-addon" id="basic-addon2">Street</span>
-                  				<input type="text" class="form-control" placeholder="Street" name="route" aria-describedby="basic-addon2">
-                			</div>
-                			<div class="input-group">
-                  				<span class="input-group-addon" id="basic-addon3">City</span>
-                  				<input type="text" class="form-control" placeholder="City" name="locality" aria-describedby="basic-addon3">
-                			</div>
-			                <div class="input-group">
-			                  <span class="input-group-addon" id="basic-addon4">Province</span>
-			                  <input type="text" class="form-control" placeholder="State" name="administrative_area_level_1" aria-describedby="basic-addon4">
-			                </div>
-			                <div class="input-group">
-			                  <span class="input-group-addon" id="basic-addon5">Postal Code</span>
-			                  <input type="text" class="form-control" placeholder="Postal Code" name="postal_code" aria-describedby="basic-addon5">
-			                </div>
-			                <div class="input-group">
-			                  <span class="input-group-addon" id="basic-addon6">Country</span>
-			                  <input type="text" class="form-control" placeholder="Country" name="country" aria-describedby="basic-addon6">
-			                </div>
-			                <div class="input-group">
-			                  <span class="input-group-addon" id="basic-addon7">Latitude</span>
-			                  <input type="text" class="form-control" placeholder="Latitude" name="lat" aria-describedby="basic-addon7">
-			                </div>
-			                <div class="input-group">
-			                   <span class="input-group-addon" id="basic-addon8">Longitude</span>
-			                   <input type="text" class="form-control" placeholder="Longitude" name="lng" aria-describedby="basic-addon8">
-			                </div>
-			              </fieldset>
-            		</form>  
-          		</div>
-          		</div> <!-- end of panel body -->
-          	</div> <!-- end of panel -->
-        	</div> <!-- col-md-2  -->
-        
-        	<div class="col-md-10">
-        		<div class="panel panel-info">
-          			<div class="panel-heading">Google Map Display</div>
-      			 	<div class="panel-body">
-          				<div class="map_canvas"></div>
-          			</div>
-          		</div> <!-- end of panel -->
-       		</div><!-- end of column -->
-      	</div> <!--  end of row -->
-      	<div class="row">
-			<div class="col-md-2">
-      		<div class="panel panel-info"">
-      			<div class="panel-heading">Property Details</div>
-      			 <div class="panel-body">
-				<form>
-					<fieldset class="details">
-						<div class="input-group">
-            				<span class="input-group-addon" id="sizing-addon10">Name</span>
-                			<input type="text" class="form-control" placeholder="Property Name" name="propety_name" aria-describedby="sizing-addon10">
-           				</div>
-           				<div class="input-group">
-            				<span class="input-group-addon" id="sizing-addon11">Price(R/m<sup>2</sup>)</span>
-                			<input type="text" class="form-control" placeholder="Rand per square meter" name="propety_price" aria-describedby="sizing-addon11">
-           				</div>
-						<div class="input-group">
-            				<span class="input-group-addon" id="sizing-addon12">Description</span>
-                			<textarea class="form-control" placeholder="Description" name="propety_description" aria-describedby="sizing-addon12"></textarea>
-           				</div>
-           				<div class="input-group">
-            				<span class="input-group-addon" id="sizing-addon13">Plot size(m<sup>2</sup>)</span>
-                			<input type="text" class="form-control" placeholder="Plot size in square meter" name="plot_size" aria-describedby="sizing-addon13">
-           				</div>
-           				<div class="input-group">
-            				<span class="input-group-addon" id="sizing-addon14">Structure size(m<sup>2</sup>)</span>
-                			<input type="text" class="form-control" placeholder="Building size in square meter" name="building_size" aria-describedby="sizing-addon14">
-           				</div>
-           				<div class="input-group">
-            				<span class="input-group-addon" id="sizing-addon15">Year built</span>
-                			<input type="text" class="form-control" placeholder="Year building was built" name="building_date" aria-describedby="sizing-addon15">
-           				</div>
-			
-					</fieldset>
-				</form>
-				</div>
-      		</div>
-       			<h3>Property Details</h3>
-       			<form>
-         
-       			</form>
-	
-			</div> <!--  end of col -->
-			
-			<div class="col-md-10">
+<%@ include file="../layout/taglib.jsp"%>
+
+<div class="container-fluid">
+	<div class="row">
+		<div class="col-md-2">
 			<div class="panel panel-info">
-          			<div class="panel-heading">Upload Property Images</div>
-	    		 	<div class="panel-body">
-    			<!-- The file upload form used as target for the file upload widget -->
-    			<form id="fileupload" action='<spring:url value="/upload"/>' method="POST" enctype="multipart/form-data">
-        			<!-- Redirect browsers with JavaScript disabled to the origin page -->
-        			<noscript><input type="hidden" name="redirect" value="http://blueimp.github.io/jQuery-File-Upload/"></noscript>
-        			<!-- The fileupload-buttonbar contains buttons to add/delete files and start/cancel the upload -->
-        			<div class="row fileupload-buttonbar">
-            			<div class="col-lg-7">
-                			<!-- The fileinput-button span is used to style the file input field as button -->
-                			<span class="btn btn-success fileinput-button">
-                    			<i class="glyphicon glyphicon-plus"></i>
-                    			<span>Add files...</span>
-                    			<input type="file" name="files[]" multiple>
-                			</span>
-                			<button type="submit" class="btn btn-primary start">
-                    			<i class="glyphicon glyphicon-upload"></i>
-                    			<span>Start upload</span>
-                			</button>
-                			<button type="reset" class="btn btn-warning cancel">
-                    			<i class="glyphicon glyphicon-ban-circle"></i>
-                    			<span>Cancel upload</span>
-                			</button>
-                			<button type="button" class="btn btn-danger delete">
-                    			<i class="glyphicon glyphicon-trash"></i>
-                    			<span>Delete</span>
-                			</button>
-                			<input type="checkbox" class="toggle">
-                				<!-- The global file processing state -->
-                				<span class="fileupload-process"></span>
-            			</div> <!-- end of column -->
-            			<!-- The global progress state -->
-            			<div class="col-lg-5 fileupload-progress fade">
-                			<!-- The global progress bar -->
-                			<div class="progress progress-striped active" role="progressbar" aria-valuemin="0" aria-valuemax="100">
-                    			<div class="progress-bar progress-bar-success" style="width:0%;"></div>
-                			</div>
-                			<!-- The extended global progress state -->
-                			<div class="progress-extended">&nbsp;</div>
-                		</div> <!-- end of column -->
-            		</div> <!-- end of button bar -->
-        	
-       				<!-- The table listing the files available for upload/download -->
-        			<table role="presentation" class="table table-striped">
-        				<tbody class="files"></tbody>
-        			</table>
-        		</form>
-        		</div>
-        		</div>
-        	
-<!-- 		    	<br> -->
-<!--     			<div class="panel panel-default"> -->
-<!--         			<div class="panel-heading"> -->
-<!--             			<h3 class="panel-title">Upload Notes</h3> -->
-<!--         			</div> -->
-        				
-<!--         			<div class="panel-body"> -->
-<!--             			<ul> -->
-<!--                 			<li>The maximum file size for uploads is <strong>5 MB</strong></li> -->
-<!--                 			<li>Only image files (<strong>JPG, GIF, PNG</strong>) are allowed</li> -->
-<!--             			</ul> -->
-<!--         			</div> -->
-<!--         		</div> end of panel -->
-		
-				<!-- The blueimp Gallery widget -->
-<!-- 				<div id="blueimp-gallery" class="blueimp-gallery blueimp-gallery-controls" data-filter=":even"> -->
-<!--     				<div class="slides"></div> -->
-<!--     					<h3 class="title"></h3> -->
-<!--     					<a class="prev">‹</a> -->
-<!--     					<a class="next">›</a> -->
-<!--     					<a class="close">×</a> -->
-<!--     					<a class="play-pause"></a> -->
-<!--     					<ol class="indicator"></ol> -->
-<!-- 					</div>end of slides -->
-<!-- 				</div> end of gallery -->
-			</div><!--  end of col-8 -->
-		</div> <!-- end of row -->
-	</div> 
-			
+				<div class="panel-heading">Type property address here</div>
+				<div class="panel-body">
+					<form>
+						<fieldset class="details">
+							<div class="input-group">
+								<span class="input-group-addon" id="sizing-addon">Find</span> <input
+									class="form-control" data-toggle="popover"
+									data-placement="right"
+									data-content="Continue typing until you see your location in the list. Click your location and the form will be filled in for you."
+									data-original-title="Let's find your location!" id="formmapper"
+									type="text" placeholder="Just start typing here..."
+									aria-describedby="sizing-addon" />
+								<!--               		<span class="input-group-btn"> -->
+								<!--               			<button id="find" class="btn btn-success" type="button"><i class="icon-map-marker icon-white"></i> Find!</button> -->
+								<!--               		</span> -->
+
+							</div>
+						</fieldset>
+					</form>
+				</div>
+				<!-- end of panel body -->
+			</div>
+			<!-- end of panel -->
+
+
+			<div class="panel panel-info">
+				<div class="panel-heading">Address Details(autocompletes)</div>
+				<div class="panel-body">
+					<div>
+						<form>
+							<fieldset class="details">
+
+								<div class="input-group">
+									<span class="input-group-addon" id="sizing-addon1">Number</span>
+									<input type="text" class="form-control"
+										placeholder="Street number" name="street_number"
+										aria-describedby="sizing-addon1">
+								</div>
+								<div class="input-group">
+									<span class="input-group-addon" id="basic-addon2">Street</span>
+									<input type="text" class="form-control" placeholder="Street"
+										name="route" aria-describedby="basic-addon2">
+								</div>
+								<div class="input-group">
+									<span class="input-group-addon" id="basic-addon3">City</span> <input
+										type="text" class="form-control" placeholder="City"
+										name="locality" aria-describedby="basic-addon3">
+								</div>
+								<div class="input-group">
+									<span class="input-group-addon" id="basic-addon4">Province</span>
+									<input type="text" class="form-control" placeholder="State"
+										name="administrative_area_level_1"
+										aria-describedby="basic-addon4">
+								</div>
+								<div class="input-group">
+									<span class="input-group-addon" id="basic-addon5">Postal
+										Code</span> <input type="text" class="form-control"
+										placeholder="Postal Code" name="postal_code"
+										aria-describedby="basic-addon5">
+								</div>
+								<div class="input-group">
+									<span class="input-group-addon" id="basic-addon6">Country</span>
+									<input type="text" class="form-control" placeholder="Country"
+										name="country" aria-describedby="basic-addon6">
+								</div>
+								<div class="input-group">
+									<span class="input-group-addon" id="basic-addon7">Latitude</span>
+									<input type="text" class="form-control" placeholder="Latitude"
+										name="lat" aria-describedby="basic-addon7">
+								</div>
+								<div class="input-group">
+									<span class="input-group-addon" id="basic-addon8">Longitude</span>
+									<input type="text" class="form-control" placeholder="Longitude"
+										name="lng" aria-describedby="basic-addon8">
+								</div>
+							</fieldset>
+						</form>
+					</div>
+				</div>
+				<!-- end of panel body -->
+			</div>
+			<!-- end of panel -->
+		</div>
+		<!-- col-md-2  -->
+
+		<div class="col-md-10">
+			<div class="panel panel-info">
+				<div class="panel-heading">Google Map Display</div>
+				<div class="panel-body">
+					<div class="map_canvas"></div>
+				</div>
+			</div>
+			<!-- end of panel -->
+		</div>
+		<!-- end of column -->
+	</div>
+	<!--  end of row -->
+	<div class="row">
+		<div class="col-md-2">
+			<div class="panel panel-info">
+				<div class="panel-heading">Property Details</div>
+				<div class="panel-body">
+					<form>
+						<fieldset class="details">
+							<div class="input-group">
+								<span class="input-group-addon" id="sizing-addon10">Name</span>
+								<input type="text" class="form-control" placeholder="Property Name" name="propety_name" aria-describedby="sizing-addon10">
+							</div>
+							
+							<div class="input-group">
+								<span class="input-group-addon" id="sizing-addon11">Price(R/m<sup>2</sup>)
+								</span> <input type="text" class="form-control"
+									placeholder="Rand per square meter" name="propety_price"
+									aria-describedby="sizing-addon11">
+							</div>
+							<div class="input-group">
+								<span class="input-group-addon" id="sizing-addon12">Description</span>
+								<textarea class="form-control" placeholder="Description"
+									name="propety_description" aria-describedby="sizing-addon12"></textarea>
+							</div>
+							<div class="input-group">
+								<span class="input-group-addon" id="sizing-addon13">Plot
+									size(m<sup>2</sup>)
+								</span> <input type="text" class="form-control" placeholder="Plot size"
+									name="plot_size" aria-describedby="sizing-addon13">
+							</div>
+							<div class="input-group">
+								<span class="input-group-addon" id="sizing-addon14">Building
+									size(m<sup>2</sup>)
+								</span> <input type="text" class="form-control"
+									placeholder="Building size" name="building_size"
+									aria-describedby="sizing-addon14">
+							</div>
+							<div class="input-group">
+								<span class="input-group-addon" id="sizing-addon15">Year
+									built</span> <input type="text" class="form-control"
+									placeholder="Year building was built" name="building_date"
+									aria-describedby="sizing-addon15">
+							</div>
+						</fieldset>
+					</form>
+				</div>
+				<!-- end of panel body -->
+			</div> <!-- end of panel -->
+						<div class="panel panel-info">
+				<div class="panel-heading">Property Features</div>
+				<div class="panel-body">
+				</div> <!-- end of panel body -->
+			</div> <!--  end of panel -->
+
+		</div> <!--  end of col -->
+
+		<div class="col-md-10">
+			<div class="panel panel-info">
+				<div class="panel-heading">Upload Property Images</div>
+				<div class="panel-body">
+					<!-- The file upload form used as target for the file upload widget -->
+					<form id="fileupload" action='<spring:url value="/upload"/>'
+						method="POST" enctype="multipart/form-data">
+						<!-- Redirect browsers with JavaScript disabled to the origin page -->
+						<noscript>
+							<input type="hidden" name="redirect"
+								value="http://blueimp.github.io/jQuery-File-Upload/">
+						</noscript>
+						<!-- The fileupload-buttonbar contains buttons to add/delete files and start/cancel the upload -->
+						<div class="row fileupload-buttonbar">
+							<div class="col-lg-7">
+								<!-- The fileinput-button span is used to style the file input field as button -->
+								<span class="btn btn-success fileinput-button"> <i
+									class="glyphicon glyphicon-plus"></i> <span>Add files...</span>
+									<input type="file" name="files[]" multiple>
+								</span>
+								<button type="submit" class="btn btn-primary start">
+									<i class="glyphicon glyphicon-upload"></i> <span>Start
+										upload</span>
+								</button>
+								<button type="reset" class="btn btn-warning cancel">
+									<i class="glyphicon glyphicon-ban-circle"></i> <span>Cancel
+										upload</span>
+								</button>
+								<button type="button" class="btn btn-danger delete">
+									<i class="glyphicon glyphicon-trash"></i> <span>Delete</span>
+								</button>
+								<input type="checkbox" class="toggle">
+								<!-- The global file processing state -->
+								<span class="fileupload-process"></span>
+							</div>
+							<!-- end of column -->
+							<!-- The global progress state -->
+							<div class="col-lg-5 fileupload-progress fade">
+								<!-- The global progress bar -->
+								<div class="progress progress-striped active" role="progressbar"
+									aria-valuemin="0" aria-valuemax="100">
+									<div class="progress-bar progress-bar-success"
+										style="width: 0%;"></div>
+								</div>
+								<!-- The extended global progress state -->
+								<div class="progress-extended">&nbsp;</div>
+							</div>
+							<!-- end of column -->
+						</div>
+						<!-- end of button bar -->
+
+						<!-- The table listing the files available for upload/download -->
+						<table role="presentation" class="table table-striped">
+							<tbody class="files"></tbody>
+						</table>
+					</form>
+				</div> <!-- end of panel body-->
+			</div> <!-- end of panel -->
+
+			<!-- 		    	<br> -->
+			<!--     			<div class="panel panel-default"> -->
+			<!--         			<div class="panel-heading"> -->
+			<!--             			<h3 class="panel-title">Upload Notes</h3> -->
+			<!--         			</div> -->
+
+			<!--         			<div class="panel-body"> -->
+			<!--             			<ul> -->
+			<!--                 			<li>The maximum file size for uploads is <strong>5 MB</strong></li> -->
+			<!--                 			<li>Only image files (<strong>JPG, GIF, PNG</strong>) are allowed</li> -->
+			<!--             			</ul> -->
+			<!--         			</div> -->
+			<!--         		</div> end of panel -->
+
+			<!-- The blueimp Gallery widget -->
+			<!-- 				<div id="blueimp-gallery" class="blueimp-gallery blueimp-gallery-controls" data-filter=":even"> -->
+			<!--     				<div class="slides"></div> -->
+			<!--     					<h3 class="title"></h3> -->
+			<!--     					<a class="prev">‹</a> -->
+			<!--     					<a class="next">›</a> -->
+			<!--     					<a class="close">×</a> -->
+			<!--     					<a class="play-pause"></a> -->
+			<!--     					<ol class="indicator"></ol> -->
+			<!-- 					</div>end of slides -->
+			<!-- 				</div> end of gallery -->
+		</div>
+		<!--  end of col-8 -->
+	</div>
+	<!-- end of row -->
+
+	<button id="saveButton">Save</button>
+</div>
+<!--  end of container fluid -->
+
+
+
 <!-- The template to display files available for upload -->
 <script id="template-upload" type="text/x-tmpl">
 {% for (var i=0, file; file=o.files[i]; i++) { %}
@@ -280,31 +333,38 @@
     </tr>
 {% } %}
 </script>
-    
-    <script>
-	
-      $(function(){
-        $("#formmapper").formmapper({
-          map: ".map_canvas",
-          findme: true,
-          country: 'za',
-          details: "form",
-          markerOptions: {
-            draggable: true
-          }
-        });
-        
-        $("#formmapper").bind("geocode:dragged", function(event, latLng){
-		  $("#formmapper").formmapper("find",latLng.lat()+","+latLng.lng());
-        });
-        
-        
-        $("#find").click(function(){
-          $("#formmapper").trigger("geocode");
-        }).click();
+
+<script>
+	$(function() {
+		$("#formmapper").formmapper({
+			map : ".map_canvas",
+			findme : true,
+			country : 'za',
+			details : "form",
+			markerOptions : {
+				draggable : true
+			}
+		});
+
+		$("#formmapper").bind(
+				"geocode:dragged",
+				function(event, latLng) {
+					$("#formmapper").formmapper("find",
+							latLng.lat() + "," + latLng.lng());
+				});
+
+		$("#find").click(function() {
+			$("#formmapper").trigger("geocode");
+		}).click();
+
+		$('#formmapper').popover({
+			'trigger' : 'focus'
+		});
 		
-		$('#formmapper').popover({'trigger': 'focus'});
-		
+		$( "#saveButton" ).click(function() {
+			  uploadProperty();
+			});
+
 		$('input:disabled').val('Add location above');
-      });
-    </script>
+	});
+</script>

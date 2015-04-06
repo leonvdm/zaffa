@@ -5,7 +5,7 @@
 		<class>com.zaffa.industrial.entity.Property</class>
 		<class>com.zaffa.industrial.entity.Role</class>
 		<class>com.zaffa.industrial.entity.Company</class>
-		<class>com.zaffa.industrial.entity.Photo</class>
+		<class>com.zaffa.industrial.entity.Image</class>
 <!-- 		<properties> -->
 <!-- 			<property name="hibernate.dialect" value="org.hibernate.spatial.dialect.postgis.PostgisDialect"/> -->
 <!-- 		</properties> -->

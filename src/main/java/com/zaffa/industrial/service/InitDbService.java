@@ -11,7 +11,7 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import com.zaffa.industrial.entity.Company;
-import com.zaffa.industrial.entity.Photo;
+import com.zaffa.industrial.entity.Image;
 import com.zaffa.industrial.entity.Property;
 import com.zaffa.industrial.entity.PropertyType;
 import com.zaffa.industrial.entity.Role;
@@ -97,21 +97,21 @@ public class InitDbService {
 			absa.setLongitude(18.51798389999999);
 			propertyRepository.save(absa);
 
-			Photo one = new Photo();
+			Image one = new Image();
 			one.setDescription("Photo1");
 			one.setUploadDate(java.sql.Date.valueOf("2015-01-01"));
 			one.setProperty(mercedes);
 			one.setUploader(userAdmin);
 			photoRepository.save(one);
 
-			Photo two = new Photo();
+			Image two = new Image();
 			two.setDescription("Photo2");
 			two.setUploadDate(java.sql.Date.valueOf("2016-01-01"));
 			two.setProperty(absa);
 			two.setUploader(userAdmin);
 			photoRepository.save(two);
 
-			Photo three = new Photo();
+			Image three = new Image();
 			three.setDescription("Photo3");
 			three.setUploadDate(java.sql.Date.valueOf("2014-01-01"));
 			three.setProperty(absa);

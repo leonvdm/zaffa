@@ -4,7 +4,9 @@
 
 <%@ include file="../layout/taglib.jsp" %>
 
-		<form id = "Address" class="AddressForm">
+    
+		
+		<form id = "Address" >
 		<fieldset class="details">
 			<div class="form-group">
 				<label for="autocomplete">Please enter the address</label>
@@ -46,14 +48,13 @@
 <!--   			</div> -->
 			</fieldset>
     	</form>
-    	
-<!--     <div class="container-fluid"> -->
-    	
-    		<div id="map_home"></div>
- 
-<!--    </div> -->
+    <div class="container-fluid">
+    
+    	<div id="map_home"></div>
+   </div>
    
    <div class="properties"></div>
+    
 <script type="text/javascript">
 	<!-- Map creation is here -->
 	
@@ -204,7 +205,7 @@
 		//Setting up the map options like zoom level, map type.
 		var mapOptions = {
 		    center: latLng,
-		    zoom: 15,
+		    zoom: 13,
 		    mapTypeId: google.maps.MapTypeId.ROADMAP
 		};
 

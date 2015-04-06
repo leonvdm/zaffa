@@ -442,8 +442,6 @@
   
 })( jQuery, window, document );
 
-
-
   function findMyLocation(theObj){
 	  if (navigator.geolocation) {
 			  navigator.geolocation.getCurrentPosition(function(position) {
@@ -463,13 +461,18 @@
 	      title: 'Hello World!'
 	  });
   }
+  
+  function uploadProperty() {
+	  //get form data 
+	  //get images
+  }
  
   
   $(document).ready(function() {
 	  $('a[href="' + this.location.pathname + '"]').parent().addClass('active');
   });
   
-	
+ 
 
   
 

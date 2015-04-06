@@ -9,7 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
-import com.zaffa.industrial.entity.Photo;
+import com.zaffa.industrial.entity.Image;
 import com.zaffa.industrial.entity.Property;
 import com.zaffa.industrial.entity.Role;
 import com.zaffa.industrial.entity.RoleType;
@@ -65,7 +65,7 @@ public class UserService {
 		List<Property> properties = propertyRepository.findByUploader(user);
 		
 		for (Property property : properties) {
-			List<Photo> photos = photoRepository.findByProperty(property);
+			List<Image> photos = photoRepository.findByProperty(property);
 			property.setPhotos(photos);
 		}
 		

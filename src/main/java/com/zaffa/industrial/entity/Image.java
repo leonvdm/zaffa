@@ -9,7 +9,7 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 
 @Entity
-public class Photo {
+public class Image {
 
 	@Id
 	@GeneratedValue
