@@ -18,7 +18,7 @@ import com.zaffa.industrial.entity.Role;
 import com.zaffa.industrial.entity.RoleType;
 import com.zaffa.industrial.entity.User;
 import com.zaffa.industrial.repository.CompanyRepository;
-import com.zaffa.industrial.repository.PhotoRepository;
+import com.zaffa.industrial.repository.ImageRepository;
 import com.zaffa.industrial.repository.PropertyRepository;
 import com.zaffa.industrial.repository.RoleRepository;
 import com.zaffa.industrial.repository.UserRepository;
@@ -37,7 +37,7 @@ public class InitDbService {
 	private CompanyRepository companyRepository;
 
 	@Autowired
-	private PhotoRepository photoRepository;
+	private ImageRepository imageRepository;
 
 	@Autowired
 	private PropertyRepository propertyRepository;
@@ -98,25 +98,25 @@ public class InitDbService {
 			propertyRepository.save(absa);
 
 			Image one = new Image();
-			one.setDescription("Photo1");
+			one.setName("Photo1");
 			one.setUploadDate(java.sql.Date.valueOf("2015-01-01"));
 			one.setProperty(mercedes);
 			one.setUploader(userAdmin);
-			photoRepository.save(one);
+			imageRepository.save(one);
 
 			Image two = new Image();
-			two.setDescription("Photo2");
+			two.setName("Photo2");
 			two.setUploadDate(java.sql.Date.valueOf("2016-01-01"));
 			two.setProperty(absa);
 			two.setUploader(userAdmin);
-			photoRepository.save(two);
+			imageRepository.save(two);
 
 			Image three = new Image();
-			three.setDescription("Photo3");
+			three.setName("Photo3");
 			three.setUploadDate(java.sql.Date.valueOf("2014-01-01"));
 			three.setProperty(absa);
 			three.setUploader(userAdmin);
-			photoRepository.save(three);
+			imageRepository.save(three);
 
 		}
 

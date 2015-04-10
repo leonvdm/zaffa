@@ -58,7 +58,7 @@ public class Property {
 	private PropertyType type;
 	
 	@OneToMany(mappedBy="property", cascade=CascadeType.REMOVE)
-	private List<Image> photos;
+	private List<Image> images;
 	
 	@ManyToOne
 	@JoinColumn(name="property_id")
@@ -144,12 +144,12 @@ public class Property {
 		this.pricePerSqm = pricePerSqm;
 	}
 
-	public List<Image> getPhotos() {
-		return photos;
+	public List<Image> getImages() {
+		return images;
 	}
 
-	public void setPhotos(List<Image> photos) {
-		this.photos = photos;
+	public void setImages(List<Image> images) {
+		this.images = images;
 	}
 
 	public User getUploader() {

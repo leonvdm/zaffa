@@ -17,8 +17,9 @@
 
 <%-- <link href="<spring:url value="/resources/css/bootstrap.css" />" rel="stylesheet"> --%>
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
-<link href="<spring:url value="/resources/css/style.css" />" rel="stylesheet">
 
+<link href="<spring:url value="/resources/css/style.css" />" rel="stylesheet">
+<link href="<spring:url value="/resources/css/dropzone.css" />" rel="stylesheet">
 
 
 <title><tiles:getAsString name="title"></tiles:getAsString></title>
@@ -33,39 +34,10 @@
 	<script src="//ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
 	<script src="http://ajax.aspnetcdn.com/ajax/jquery.validate/1.13.1/jquery.validate.js"></script>
 	<script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.3/jquery-ui.min.js"></script>
-	<!-- The jQuery UI widget factory, can be omitted if jQuery UI is already included -->
-	<script src="/resources/js/fileUpload/jquery.ui.widget.js"></script>
-	<!-- The Templates plugin is included to render the upload/download listings -->
-	<script src="http://blueimp.github.io/JavaScript-Templates/js/tmpl.min.js"></script>
-	<!-- The Load Image plugin is included for the preview images and image resizing functionality -->
-	<script src="/resources/js/fileUpload/load-image.all.min.js"></script>
-	<!-- The Canvas to Blob plugin is included for image resizing functionality -->
-	<script src="http://blueimp.github.io/JavaScript-Canvas-to-Blob/js/canvas-to-blob.min.js"></script>
-	<!-- Bootstrap JS is not required, but included for the responsive demo navigation -->
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
-	<!-- blueimp Gallery script -->
-	<script src="http://blueimp.github.io/Gallery/js/jquery.blueimp-gallery.min.js"></script>
-	<!-- The Iframe Transport is required for browsers without support for XHR file uploads -->
-	<script src="/resources/js/fileUpload/jquery.iframe-transport.js"></script>
-	<!-- The basic File Upload plugin -->
-	<script src="/resources/js/fileUpload/jquery.fileupload.js"></script>
-	<!-- The File Upload processing plugin -->
-	<script src="/resources/js/fileUpload/jquery.fileupload-process.js"></script>
-	<!-- The File Upload image preview & resize plugin -->
-	<script src="/resources/js/fileUpload/jquery.fileupload-image.js"></script>
-	<!-- The File Upload audio preview plugin -->
-	<script src="/resources/js/fileUpload/jquery.fileupload-audio.js"></script>
-	<!-- The File Upload video preview plugin -->
-	<script src="/resources/js/fileUpload/jquery.fileupload-video.js"></script>
-	<!-- The File Upload validation plugin -->
-	<script src="/resources/js/fileUpload/jquery.fileupload-validate.js"></script>
-	<!-- The File Upload user interface plugin -->
-	<script src="/resources/js/fileUpload/jquery.fileupload-ui.js"></script>
-	<!-- The main application script -->
-	<script src="/resources/js/fileUpload/main.js"></script>
-
 
 	<script src="<spring:url value="/resources/js/formmapper.js" />"></script>
+	<script src="<spring:url value="/resources/js/dropzone.js" />"></script>
 
 	<!-- Menu Page -->
 	<tiles:insertAttribute name="menu" />

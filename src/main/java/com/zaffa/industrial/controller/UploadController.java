@@ -2,11 +2,8 @@ package com.zaffa.industrial.controller;
 
 import org.apache.log4j.Logger;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
-
-import com.zaffa.industrial.entity.Property;
-import com.zaffa.industrial.entity.User;
+import org.springframework.web.bind.annotation.RequestMethod;
 
 @Controller
 public class UploadController {
@@ -18,8 +15,15 @@ public class UploadController {
 	
 	static Logger log = Logger.getLogger(UploadController.class.getName());
 	
-	@RequestMapping("/upload")
+	@RequestMapping(value="/upload", method=RequestMethod.POST)
 	public String upload() {
+		log.info("UPLOADING - POST");
+		return "upload";
+	}
+	
+	@RequestMapping(value="/upload", method=RequestMethod.GET)
+	public String uploadGET() {
+		log.info("UPLOADING - GET");
 		return "upload";
 	}
 }

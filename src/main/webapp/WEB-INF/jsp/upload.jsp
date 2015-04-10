@@ -152,8 +152,7 @@
 							</div>
 						</fieldset>
 					</form>
-				</div>
-				<!-- end of panel body -->
+				</div> <!-- end of panel body -->
 			</div> <!-- end of panel -->
 						<div class="panel panel-info">
 				<div class="panel-heading">Property Features</div>
@@ -167,172 +166,54 @@
 			<div class="panel panel-info">
 				<div class="panel-heading">Upload Property Images</div>
 				<div class="panel-body">
-					<!-- The file upload form used as target for the file upload widget -->
-					<form id="fileupload" action='<spring:url value="/upload"/>'
-						method="POST" enctype="multipart/form-data">
-						<!-- Redirect browsers with JavaScript disabled to the origin page -->
-						<noscript>
-							<input type="hidden" name="redirect"
-								value="http://blueimp.github.io/jQuery-File-Upload/">
-						</noscript>
-						<!-- The fileupload-buttonbar contains buttons to add/delete files and start/cancel the upload -->
-						<div class="row fileupload-buttonbar">
-							<div class="col-lg-7">
-								<!-- The fileinput-button span is used to style the file input field as button -->
-								<span class="btn btn-success fileinput-button"> <i
-									class="glyphicon glyphicon-plus"></i> <span>Add files...</span>
-									<input type="file" name="files[]" multiple>
-								</span>
-								<button type="submit" class="btn btn-primary start">
-									<i class="glyphicon glyphicon-upload"></i> <span>Start
-										upload</span>
-								</button>
-								<button type="reset" class="btn btn-warning cancel">
-									<i class="glyphicon glyphicon-ban-circle"></i> <span>Cancel
-										upload</span>
-								</button>
-								<button type="button" class="btn btn-danger delete">
-									<i class="glyphicon glyphicon-trash"></i> <span>Delete</span>
-								</button>
-								<input type="checkbox" class="toggle">
-								<!-- The global file processing state -->
-								<span class="fileupload-process"></span>
-							</div>
-							<!-- end of column -->
-							<!-- The global progress state -->
-							<div class="col-lg-5 fileupload-progress fade">
-								<!-- The global progress bar -->
-								<div class="progress progress-striped active" role="progressbar"
-									aria-valuemin="0" aria-valuemax="100">
-									<div class="progress-bar progress-bar-success"
-										style="width: 0%;"></div>
-								</div>
-								<!-- The extended global progress state -->
-								<div class="progress-extended">&nbsp;</div>
-							</div>
-							<!-- end of column -->
-						</div>
-						<!-- end of button bar -->
-
-						<!-- The table listing the files available for upload/download -->
-						<table role="presentation" class="table table-striped">
-							<tbody class="files"></tbody>
-						</table>
+					<!-- The file upload form used as target for the file upload widget  -->
+					<form id="filedropzone" action='<spring:url value="/upload.html"/>' method="POST" enctype="multipart/form-data" class="dropzone">
+  						<div class="fallback">
+    						<input name="file" type="file" multiple />
+  						</div>
 					</form>
-				</div> <!-- end of panel body-->
-			</div> <!-- end of panel -->
+					
+					<script>
+                 Dropzone.options.filedropzone = {
+// url does not has to be written if we have wrote action in the form tag but i have mentioned here just for convenience sake 
+          url: 'upload.html', 
+          addRemoveLinks: true,
+          autoProcessQueue: false, // this is important as you dont want form to be submitted unless you have clicked the submit button
+          autoDiscover: false,
+          paramName: 'pic', // this is optional Like this one will get accessed in php by writing $_FILE['pic'] // if you dont specify it then bydefault it taked 'file' as paramName eg: $_FILE['file'] 
+          clickable: true, // this tells that the dropzone will not be clickable . we have to do it because v dont want the whole form to be clickable 
+          accept: function(file, done) {
+            console.log("uploaded");
+            done();
+          },
+         error: function(file, msg){
+            alert(msg);
+          },
+          init: function() {
 
-			<!-- 		    	<br> -->
-			<!--     			<div class="panel panel-default"> -->
-			<!--         			<div class="panel-heading"> -->
-			<!--             			<h3 class="panel-title">Upload Notes</h3> -->
-			<!--         			</div> -->
+              var fileDropzone = this;
+            //now we will submit the form when the button is clicked
+            $("#sbmtbtn").on('click',function(e) {
+               e.preventDefault();
+               fileDropzone.processQueue(); // this will submit your form to the specified action path
+              // after this, your whole form will get submitted with all the inputs + your files and the php code will remain as usual 
+        //REMEMBER you DON'T have to call ajax or anything by yourself, dropzone will take care of that
+            });
 
-			<!--         			<div class="panel-body"> -->
-			<!--             			<ul> -->
-			<!--                 			<li>The maximum file size for uploads is <strong>5 MB</strong></li> -->
-			<!--                 			<li>Only image files (<strong>JPG, GIF, PNG</strong>) are allowed</li> -->
-			<!--             			</ul> -->
-			<!--         			</div> -->
-			<!--         		</div> end of panel -->
+          } // init end
 
-			<!-- The blueimp Gallery widget -->
-			<!-- 				<div id="blueimp-gallery" class="blueimp-gallery blueimp-gallery-controls" data-filter=":even"> -->
-			<!--     				<div class="slides"></div> -->
-			<!--     					<h3 class="title"></h3> -->
-			<!--     					<a class="prev">‹</a> -->
-			<!--     					<a class="next">›</a> -->
-			<!--     					<a class="close">×</a> -->
-			<!--     					<a class="play-pause"></a> -->
-			<!--     					<ol class="indicator"></ol> -->
-			<!-- 					</div>end of slides -->
-			<!-- 				</div> end of gallery -->
-		</div>
-		<!--  end of col-8 -->
-	</div>
-	<!-- end of row -->
+        };
 
-	<button id="saveButton">Save</button>
-</div>
-<!--  end of container fluid -->
+        </script>
+				
 
+				</div> <!--end of panel body  -->
+			</div> <!-- end of panel  -->
+		</div>  <!-- end of col-10  -->
+	</div> <!-- end of row -->
 
-
-<!-- The template to display files available for upload -->
-<script id="template-upload" type="text/x-tmpl">
-{% for (var i=0, file; file=o.files[i]; i++) { %}
-    <tr class="template-upload fade">
-        <td>
-            <span class="preview"></span>
-        </td>
-        <td>
-            <p class="name">{%=file.name%}</p>
-            <strong class="error text-danger"></strong>
-        </td>
-        <td>
-            <p class="size">Processing...</p>
-            <div class="progress progress-striped active" role="progressbar" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0"><div class="progress-bar progress-bar-success" style="width:0%;"></div></div>
-        </td>
-        <td>
-            {% if (!i && !o.options.autoUpload) { %}
-                <button class="btn btn-primary start">
-                    <i class="glyphicon glyphicon-upload"></i>
-                    <span>Start</span>
-                </button>
-            {% } %}
-            {% if (!i) { %}
-                <button class="btn btn-warning cancel">
-                    <i class="glyphicon glyphicon-ban-circle"></i>
-                    <span>Cancel</span>
-                </button>
-            {% } %}
-        </td>
-    </tr>
-{% } %}
-</script>
-<!-- The template to display files available for download -->
-<script id="template-download" type="text/x-tmpl">
-{% for (var i=0, file; file=o.files[i]; i++) { %}
-    <tr class="template-download fade">
-        <td>
-            <span class="preview">
-                {% if (file.thumbnailUrl) { %}
-                    <a href="{%=file.url%}" title="{%=file.name%}" download="{%=file.name%}" data-gallery><img src="{%=file.thumbnailUrl%}"></a>
-                {% } %}
-            </span>
-        </td>
-        <td>
-            <p class="name">
-                {% if (file.url) { %}
-                    <a href="{%=file.url%}" title="{%=file.name%}" download="{%=file.name%}" {%=file.thumbnailUrl?'data-gallery':''%}>{%=file.name%}</a>
-                {% } else { %}
-                    <span>{%=file.name%}</span>
-                {% } %}
-            </p>
-            {% if (file.error) { %}
-                <div><span class="label label-danger">Error</span> {%=file.error%}</div>
-            {% } %}
-        </td>
-        <td>
-            <span class="size">{%=o.formatFileSize(file.size)%}</span>
-        </td>
-        <td>
-            {% if (file.deleteUrl) { %}
-                <button class="btn btn-danger delete" data-type="{%=file.deleteType%}" data-url="{%=file.deleteUrl%}"{% if (file.deleteWithCredentials) { %} data-xhr-fields='{"withCredentials":true}'{% } %}>
-                    <i class="glyphicon glyphicon-trash"></i>
-                    <span>Delete</span>
-                </button>
-                <input type="checkbox" name="delete" value="1" class="toggle">
-            {% } else { %}
-                <button class="btn btn-warning cancel">
-                    <i class="glyphicon glyphicon-ban-circle"></i>
-                    <span>Cancel</span>
-                </button>
-            {% } %}
-        </td>
-    </tr>
-{% } %}
-</script>
+	<input type="button" id="sbmtbtn" value="submit"/>
+</div> <!--  end of container fluid -->
 
 <script>
 	$(function() {

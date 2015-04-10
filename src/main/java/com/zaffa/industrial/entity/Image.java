@@ -2,10 +2,12 @@ package com.zaffa.industrial.entity;
 
 import java.sql.Date;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.Lob;
 import javax.persistence.ManyToOne;
 
 @Entity
@@ -15,9 +17,17 @@ public class Image {
 	@GeneratedValue
 	private Integer id;
 	
-	private String description;
+	private String name;
 	
 	private Date uploadDate;
+	
+	private String contentType;
+	
+	@Lob
+	private byte[] image;
+	
+	@Column(name = "image_size")
+    private Long imageSize;
 	
 	@ManyToOne()
 	@JoinColumn(name="uploader_id")
@@ -35,12 +45,36 @@ public class Image {
 		this.id = id;
 	}
 
-	public String getDescription() {
-		return description;
+	public byte[] getImage() {
+		return image;
 	}
 
-	public void setDescription(String description) {
-		this.description = description;
+	public void setImage(byte[] image) {
+		this.image = image;
+	}
+
+	public String getContentType() {
+		return contentType;
+	}
+
+	public void setContentType(String contentType) {
+		this.contentType = contentType;
+	}
+
+	public Long getImageSize() {
+		return imageSize;
+	}
+
+	public void setImageSize(Long imageSize) {
+		this.imageSize = imageSize;
+	}
+
+	public String getName() {
+		return name;
+	}
+
+	public void setName(String name) {
+		this.name = name;
 	}
 
 	public Date getUploadDate() {

@@ -14,7 +14,7 @@ import com.zaffa.industrial.entity.Property;
 import com.zaffa.industrial.entity.Role;
 import com.zaffa.industrial.entity.RoleType;
 import com.zaffa.industrial.entity.User;
-import com.zaffa.industrial.repository.PhotoRepository;
+import com.zaffa.industrial.repository.ImageRepository;
 import com.zaffa.industrial.repository.PropertyRepository;
 import com.zaffa.industrial.repository.RoleRepository;
 import com.zaffa.industrial.repository.UserRepository;
@@ -33,7 +33,7 @@ public class UserService {
 	private RoleRepository roleRepository;
 	
 	@Autowired
-	private PhotoRepository photoRepository;
+	private ImageRepository imageRepository;
 	
 	
 	public List<User> findAll() {
@@ -65,8 +65,8 @@ public class UserService {
 		List<Property> properties = propertyRepository.findByUploader(user);
 		
 		for (Property property : properties) {
-			List<Image> photos = photoRepository.findByProperty(property);
-			property.setPhotos(photos);
+			List<Image> images = imageRepository.findByProperty(property);
+			property.setImages(images);
 		}
 		
 		user.setProperties(properties);

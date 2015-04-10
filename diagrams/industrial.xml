@@ -55,7 +55,7 @@
 	</entity>
 
 	<entity>
-		<entity-name>com.zaffa.industrial.entity.Photo</entity-name>
+		<entity-name>com.zaffa.industrial.entity.Image</entity-name>
 		<entity-width>120</entity-width>
 		<entity-height>186</entity-height>
 		<entity-X-Coordinate>36</entity-X-Coordinate>

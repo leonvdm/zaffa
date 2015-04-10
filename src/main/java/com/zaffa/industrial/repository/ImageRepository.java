@@ -7,7 +7,7 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import com.zaffa.industrial.entity.Image;
 import com.zaffa.industrial.entity.Property;
 
-public interface PhotoRepository extends JpaRepository<Image, Integer>{
+public interface ImageRepository extends JpaRepository<Image, Integer>{
 
 	List<Image> findByProperty(Property property);
 }
