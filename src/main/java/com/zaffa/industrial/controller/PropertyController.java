@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.zaffa.industrial.dto.PropertyDTO;
-import com.zaffa.industrial.service.PropetyService;
+import com.zaffa.industrial.service.PropertyService;
 
 @Controller
 @RequestMapping("/property")
@@ -20,7 +20,7 @@ public class PropertyController {
 	static Logger LOGGER = LoggerFactory.getLogger(HomeController.class);
 	
 	@Autowired
-	private PropetyService propertyService;
+	private PropertyService propertyService;
 	
 	@RequestMapping(method=RequestMethod.GET)
 	@ResponseBody

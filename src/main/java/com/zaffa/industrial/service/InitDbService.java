@@ -77,7 +77,7 @@ public class InitDbService {
 			mercedes.setType(PropertyType.FACTORY);
 			mercedes.setName("Mercedes Factory");
 			mercedes.setAvailableDate(java.sql.Date.valueOf("2015-01-01"));
-			mercedes.setSqm(5000);
+			mercedes.setBuildingSize(5000);
 			mercedes.setIsAvailable(true);
 			mercedes.setPricePerSqm(1000d);
 			mercedes.setUploader(userAdmin);
@@ -89,7 +89,7 @@ public class InitDbService {
 			absa.setType(PropertyType.COMMERCIAL);
 			absa.setName("ABSA Bank");
 			absa.setAvailableDate(java.sql.Date.valueOf("2015-02-01"));
-			absa.setSqm(2000);
+			absa.setBuildingSize(2000);
 			absa.setIsAvailable(true);
 			absa.setPricePerSqm(2000d);
 			absa.setUploader(userAdmin);

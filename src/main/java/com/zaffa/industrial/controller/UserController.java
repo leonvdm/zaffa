@@ -16,7 +16,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 
 import com.zaffa.industrial.entity.Property;
 import com.zaffa.industrial.entity.User;
-import com.zaffa.industrial.service.PropetyService;
+import com.zaffa.industrial.service.PropertyService;
 import com.zaffa.industrial.service.UserService;
 
 
@@ -30,7 +30,7 @@ public class UserController {
 	private UserService userService;
 	
 	@Autowired
-	private PropetyService propertyService;
+	private PropertyService propertyService;
 	
 	
 	@ModelAttribute("property")

@@ -23,22 +23,28 @@ public class Property {
 	@GeneratedValue
 	private Integer id;
 	
-	@Size(min=3, message = "Name must be at least 3 characters!")
-	private String name;
+	private String streetNumber;
 	
-	private String street_number;
+	private String streetName;
 	
-	private String route;
-	
-	private String locality;
+	private String city;
 	
 	private String province;
 	
-	private String postal_code;
+	private String postalCode;
 	
 	private String country;
 	
-	private Integer sqm;
+	@Size(min=3, message = "Name must be at least 3 characters!")
+	private String name;
+	
+	private String description;
+	
+	private Integer plotSize;
+	
+	private Integer buildingSize;
+	
+	private Date dateConstructed;
 	
 	private Boolean isAvailable;
 		
@@ -72,14 +78,6 @@ public class Property {
 		this.id = id;
 	}
 	
-//	public Point getPoint() {
-//		return point;
-//	}
-//
-//	public void setPoint(Point point) {
-//		this.point = point;
-//	}
-
 	public PropertyType getType() {
 		return type;
 	}
@@ -111,13 +109,22 @@ public class Property {
 	public void setName(String name) {
 		this.name = name;
 	}
+	
 
-	public Integer getSqm() {
-		return sqm;
+	public String getCity() {
+		return city;
 	}
 
-	public void setSqm(Integer sqm) {
-		this.sqm = sqm;
+	public void setCity(String city) {
+		this.city = city;
+	}
+
+	public String getDescription() {
+		return description;
+	}
+
+	public void setDescription(String description) {
+		this.description = description;
 	}
 
 	public Boolean getIsAvailable() {
@@ -160,30 +167,6 @@ public class Property {
 		this.uploader = uploader;
 	}
 
-	public String getStreet_number() {
-		return street_number;
-	}
-
-	public void setStreet_number(String street_number) {
-		this.street_number = street_number;
-	}
-
-	public String getRoute() {
-		return route;
-	}
-
-	public void setRoute(String route) {
-		this.route = route;
-	}
-
-	public String getLocality() {
-		return locality;
-	}
-
-	public void setLocality(String locality) {
-		this.locality = locality;
-	}
-
 	public String getProvince() {
 		return province;
 	}
@@ -192,12 +175,52 @@ public class Property {
 		this.province = province;
 	}
 
-	public String getPostal_code() {
-		return postal_code;
+	public String getStreetNumber() {
+		return streetNumber;
 	}
 
-	public void setPostal_code(String postal_code) {
-		this.postal_code = postal_code;
+	public void setStreetNumber(String streetNumber) {
+		this.streetNumber = streetNumber;
+	}
+
+	public String getStreetName() {
+		return streetName;
+	}
+
+	public void setStreetName(String streetName) {
+		this.streetName = streetName;
+	}
+
+	public String getPostalCode() {
+		return postalCode;
+	}
+
+	public void setPostalCode(String postalCode) {
+		this.postalCode = postalCode;
+	}
+
+	public Integer getPlotSize() {
+		return plotSize;
+	}
+
+	public void setPlotSize(Integer plotSize) {
+		this.plotSize = plotSize;
+	}
+
+	public Integer getBuildingSize() {
+		return buildingSize;
+	}
+
+	public void setBuildingSize(Integer buildingSize) {
+		this.buildingSize = buildingSize;
+	}
+
+	public Date getDateConstructed() {
+		return dateConstructed;
+	}
+
+	public void setDateConstructed(Date dateConstructed) {
+		this.dateConstructed = dateConstructed;
 	}
 
 	public String getCountry() {

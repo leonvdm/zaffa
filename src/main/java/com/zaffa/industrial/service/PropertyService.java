@@ -15,7 +15,7 @@ import com.zaffa.industrial.repository.PropertyRepository;
 import com.zaffa.industrial.repository.UserRepository;
 
 @Service
-public class PropetyService {
+public class PropertyService {
 	
 	@Autowired
 	private PropertyRepository propertyRepository;
@@ -68,19 +68,23 @@ public class PropetyService {
 		private PropertyDTO mapPropertyToDTO(Property property) {
 			PropertyDTO dto = new PropertyDTO();
 			dto.setId(property.getId());
-			dto.setName(property.getName());
-			dto.setStreet_number(property.getStreet_number());
-			dto.setRoute(property.getRoute());
-			dto.setLocality(property.getLocality());
+			dto.setStreetNumber(property.getStreetNumber());
+			dto.setStreetName(property.getStreetName());
+			dto.setCity(property.getCity());
 			dto.setProvince(property.getProvince());
-			dto.setPostal_code(property.getPostal_code());
+			dto.setPostalCode(property.getPostalCode());
 			dto.setCountry(property.getCountry());
-			dto.setSqm(property.getSqm());
+			dto.setLongitude(property.getLongitude());
+			dto.setLattitude(property.getLattitude());
+			
+			dto.setName(property.getName());
+			dto.setPlotSize(property.getPlotSize());
+			dto.setBuildingSize(property.getBuildingSize());
 			dto.setIsAvailable(property.getIsAvailable());
 			dto.setAvailableDate(property.getAvailableDate());
 			dto.setPricePerSqm(property.getPricePerSqm());
-			dto.setLongitude(property.getLongitude());
-			dto.setLattitude(property.getLattitude());
+			dto.setDateConstructed(property.getDateConstructed());
+			
 			return dto;
 		}
 	}
