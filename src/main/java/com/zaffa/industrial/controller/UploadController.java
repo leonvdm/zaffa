@@ -10,10 +10,13 @@ import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.validation.Valid;
 
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.validation.BindingResult;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -34,33 +37,43 @@ public class UploadController {
 	@Autowired
 	private PropertyService propertyService;
 
-	// @ModelAttribute("property")
-	// public Property constructProperty() {
-	// return new Property();
-	// }
+	 @ModelAttribute("property")
+	 public Property constructProperty() {
+		 return new Property();
+	 }
 
 	static Logger log = Logger.getLogger(UploadController.class.getName());
 
 	@RequestMapping(value = "/upload", method = RequestMethod.POST)
-	public @ResponseBody String upload(MultipartHttpServletRequest request, HttpServletResponse response, Principal principal) throws IOException {
+	public @ResponseBody String upload(@Valid @ModelAttribute("property") Property property, BindingResult result, MultipartHttpServletRequest request, HttpServletResponse response, Principal principal) throws IOException {
 		log.info("UPLOADING - POST");
-		log.info("Street number: " + request.getParameter("street_number"));
-		log.info("Street name: " + request.getParameter("street_name"));
-		log.info("City: " + request.getParameter("city"));
-		log.info("Province: " + request.getParameter("province"));
-		log.info("Postal Code: " + request.getParameter("postal_code"));
-		log.info("Country: " + request.getParameter("country"));
-		log.info("Lat: " + request.getParameter("lat"));
-		log.info("Lng: " + request.getParameter("lng"));
+		log.info("PROPERTY: " + property);
+//		log.info("Street number: " + request.getParameter("street_number"));
+//		log.info("Street name: " + request.getParameter("street_name"));
+//		log.info("City: " + request.getParameter("city"));
+//		log.info("Province: " + request.getParameter("province"));
+//		log.info("Postal Code: " + request.getParameter("postal_code"));
+//		log.info("Country: " + request.getParameter("country"));
+//		log.info("Lat: " + request.getParameter("lat"));
+//		log.info("Lng: " + request.getParameter("lng"));
+//
+//		log.info("property_name: " + request.getParameter("property_name"));
+//		log.info("property_description: "
+//				+ request.getParameter("property_description"));
+//		log.info("plot_size: " + request.getParameter("plot_size"));
+//		log.info("building_size: " + request.getParameter("building_size"));
+//		log.info("building_date: " + request.getParameter("building_date"));
 
-		log.info("property_name: " + request.getParameter("property_name"));
-		log.info("property_description: "
-				+ request.getParameter("property_description"));
-		log.info("plot_size: " + request.getParameter("plot_size"));
-		log.info("building_size: " + request.getParameter("building_size"));
-		log.info("building_date: " + request.getParameter("building_date"));
-
-		Property property = persistProperty(request, principal);
+		//persistProperty(request, principal);
+		if (result.hasErrors()) {
+			log.info("ERROR: " + result.getFieldError().getDefaultMessage());
+			log.info("WE HAVE ERRORS");
+			return "upload";
+		}
+		
+		propertyService.save(property, principal.getName());
+		
+		log.info("Saved property");
 
 
 		// Getting uploaded files from the request object
@@ -108,7 +121,7 @@ public class UploadController {
 			prop.setLongitude(Double.parseDouble(request.getParameter("lng")));
 		}
 
-		prop.setName(request.getParameter("property_name"));
+		prop.setPropertyName(request.getParameter("property_name"));
 		prop.setDescription(request.getParameter("property_description"));
 		
 		if (request.getParameter("plot_size") != null && request.getParameter("plot_size").length() > 0) {
@@ -135,9 +148,9 @@ public class UploadController {
 			}
 		}
 
-		propertyService.save(prop, principal.getName());
-		
-		log.info("Saved property");
+//		propertyService.save(prop, principal.getName());
+//		
+//		log.info("Saved property");
 		
 		return prop;
 	}
@@ -160,9 +173,9 @@ public class UploadController {
 	}
 	
 	@RequestMapping(value = "/uploadME", method = RequestMethod.POST)
-	public String uploadMe(HttpServletRequest request, HttpServletResponse response) {
+	public String uploadMe(@Valid @ModelAttribute("property") Property property, BindingResult result, HttpServletRequest request, HttpServletResponse response) {
 		log.info("UPLOADING - AJAXPOST");
-		log.info("Street number: " + request.getParameter("street_number"));
-		return "contact";
+		//log.info("Street number: " + request.getParameter("street_number"));
+		return "upload";
 	}
 }

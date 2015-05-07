@@ -36,7 +36,7 @@ public class Property {
 	private String country;
 	
 	@Size(min=3, message = "Name must be at least 3 characters!")
-	private String name;
+	private String propertyName;
 	
 	private String description;
 	
@@ -51,10 +51,6 @@ public class Property {
 	private Date availableDate;
 	
 	private Double pricePerSqm;
-	
-//	@Column(name="Point")
-//	@Type(type="org.hibernate.spatial.GeometryType")
-//    private Point point;
 	
 	private Double longitude;
 	
@@ -102,14 +98,13 @@ public class Property {
 		this.type = type;
 	}
 
-	public String getName() {
-		return name;
+	public String getPropertyName() {
+		return propertyName;
 	}
 
-	public void setName(String name) {
-		this.name = name;
+	public void setPropertyName(String propertyName) {
+		this.propertyName = propertyName;
 	}
-	
 
 	public String getCity() {
 		return city;
@@ -229,6 +224,30 @@ public class Property {
 
 	public void setCountry(String country) {
 		this.country = country;
+	}
+	
+	public String toString() {
+		StringBuilder sb = new StringBuilder();
+		sb.append("id: " + id);
+		sb.append(" streetNumber: " + streetNumber);
+		sb.append(" streetName: " + streetName);
+		sb.append(" city: " + city);
+		sb.append(" province: " + province);
+		sb.append(" postalCode: " + postalCode);
+		sb.append(" country: " + country);
+		sb.append(" propertyName: " + propertyName);
+		sb.append(" description: " + description);
+		sb.append(" plotSize: " + plotSize);
+		sb.append(" buildingSize: " + buildingSize);
+		sb.append(" dateConstructed: " + dateConstructed);
+		sb.append(" isAvailable" + isAvailable);
+		sb.append(" availableDate: " + availableDate);
+		sb.append(" pricePerSqm: " + pricePerSqm);
+		sb.append(" longitude: " + longitude);
+		sb.append(" lattitude: " + lattitude);
+		//sb.append( "type: " + type.name());
+		
+		return sb.toString();
 	}
 	
 	

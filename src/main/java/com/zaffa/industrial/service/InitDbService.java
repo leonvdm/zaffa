@@ -75,7 +75,7 @@ public class InitDbService {
 
 			Property mercedes = new Property();
 			mercedes.setType(PropertyType.FACTORY);
-			mercedes.setName("Mercedes Factory");
+			mercedes.setPropertyName("Mercedes Factory");
 			mercedes.setAvailableDate(java.sql.Date.valueOf("2015-01-01"));
 			mercedes.setBuildingSize(5000);
 			mercedes.setIsAvailable(true);
@@ -87,7 +87,7 @@ public class InitDbService {
 
 			Property absa = new Property();
 			absa.setType(PropertyType.COMMERCIAL);
-			absa.setName("ABSA Bank");
+			absa.setPropertyName("ABSA Bank");
 			absa.setAvailableDate(java.sql.Date.valueOf("2015-02-01"));
 			absa.setBuildingSize(2000);
 			absa.setIsAvailable(true);

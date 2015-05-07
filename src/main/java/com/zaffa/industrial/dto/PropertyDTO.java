@@ -37,7 +37,7 @@ public class PropertyDTO {
 
 	private Double lattitude;
 	
-	private String name;
+	private String propertyName;
 	
 	private Double pricePerSqm;
 	
@@ -81,14 +81,13 @@ public class PropertyDTO {
 		this.lattitude = lattitude;
 	}
 
-	public String getName() {
-		return name;
+	public String getPropertyName() {
+		return propertyName;
 	}
 
-	public void setName(String name) {
-		this.name = name;
+	public void setPropertyName(String propertyName) {
+		this.propertyName = propertyName;
 	}
-
 
 	public Boolean getIsAvailable() {
 		return isAvailable;

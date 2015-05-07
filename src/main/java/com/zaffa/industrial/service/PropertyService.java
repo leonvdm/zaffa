@@ -77,7 +77,7 @@ public class PropertyService {
 			dto.setLongitude(property.getLongitude());
 			dto.setLattitude(property.getLattitude());
 			
-			dto.setName(property.getName());
+			dto.setPropertyName(property.getPropertyName());
 			dto.setPlotSize(property.getPlotSize());
 			dto.setBuildingSize(property.getBuildingSize());
 			dto.setIsAvailable(property.getIsAvailable());
