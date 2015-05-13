@@ -96,16 +96,22 @@ h1,h2,h3{
 
 .input-group {
   padding: 5px;
-  max-width: 350px;
+  max-width: 750px;
   background-color: azure;
 }
+
+/* .input-groupFind { */
+/*   padding: 5px; */
+/*   max-width: 750px; */
+/*   background-color: azure; */
+/* } */
 
 .navbar {
 	margin-bottom: 0px;
 }
 
 .input-group-addon {
-    min-width:110px;// if you want width please write here //
+    min-width:110px;/* if you want width please write here */
     text-align:left;
 }
 

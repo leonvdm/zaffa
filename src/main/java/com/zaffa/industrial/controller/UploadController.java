@@ -37,44 +37,33 @@ public class UploadController {
 	@Autowired
 	private PropertyService propertyService;
 
-	 @ModelAttribute("property")
-	 public Property constructProperty() {
-		 return new Property();
-	 }
+//	 @ModelAttribute("property")
+//	 public Property constructProperty() {
+//		 return new Property();
+//	 }
 
 	static Logger log = Logger.getLogger(UploadController.class.getName());
 
 	@RequestMapping(value = "/upload", method = RequestMethod.POST)
-	public @ResponseBody String upload(@Valid @ModelAttribute("property") Property property, BindingResult result, MultipartHttpServletRequest request, HttpServletResponse response, Principal principal) throws IOException {
+	public @ResponseBody String upload( MultipartHttpServletRequest request, HttpServletResponse response, Principal principal) throws IOException {
 		log.info("UPLOADING - POST");
-		log.info("PROPERTY: " + property);
-//		log.info("Street number: " + request.getParameter("street_number"));
-//		log.info("Street name: " + request.getParameter("street_name"));
-//		log.info("City: " + request.getParameter("city"));
-//		log.info("Province: " + request.getParameter("province"));
-//		log.info("Postal Code: " + request.getParameter("postal_code"));
-//		log.info("Country: " + request.getParameter("country"));
-//		log.info("Lat: " + request.getParameter("lat"));
-//		log.info("Lng: " + request.getParameter("lng"));
-//
-//		log.info("property_name: " + request.getParameter("property_name"));
-//		log.info("property_description: "
-//				+ request.getParameter("property_description"));
-//		log.info("plot_size: " + request.getParameter("plot_size"));
-//		log.info("building_size: " + request.getParameter("building_size"));
-//		log.info("building_date: " + request.getParameter("building_date"));
 
-		//persistProperty(request, principal);
-		if (result.hasErrors()) {
-			log.info("ERROR: " + result.getFieldError().getDefaultMessage());
-			log.info("WE HAVE ERRORS");
-			return "upload";
-		}
-		
-		propertyService.save(property, principal.getName());
-		
-		log.info("Saved property");
+		log.info("Street number: " + request.getParameter("streetNumber"));
+		log.info("Street name: " + request.getParameter("streetName"));
+		log.info("City: " + request.getParameter("city"));
+		log.info("Province: " + request.getParameter("province"));
+		log.info("Postal Code: " + request.getParameter("postalCode"));
+		log.info("Country: " + request.getParameter("country"));
+		log.info("longitude: " + request.getParameter("longitude"));
+		log.info("longitude: " + request.getParameter("longitude"));
 
+		log.info("propertyName: " + request.getParameter("propertyName"));
+		log.info("description: " + request.getParameter("description"));
+		log.info("plotSize: " + request.getParameter("plotSize"));
+		log.info("buildingSize: " + request.getParameter("buildingSize"));
+		log.info("dateConstructed: " + request.getParameter("dateConstructed"));
+
+		Property property = persistProperty(request, principal);
 
 		// Getting uploaded files from the request object
 		Map<String, MultipartFile> fileMap = request.getFileMap();
@@ -84,9 +73,6 @@ public class UploadController {
 
 		// Iterate through the map
 		for (MultipartFile multipartFile : fileMap.values()) {
-
-			// Save the file to local disk
-			// saveFileToLocalDisk(multipartFile);
 
 			Image image = setImageInfo(multipartFile);
 			image.setProperty(property);
@@ -100,46 +86,50 @@ public class UploadController {
 			log.info("Added image to db: " + image.getName());
 			log.info("Added image to db: " + image.getImageSize());
 		}
+		
 		property.setImages(uploadedFiles);
 		return "upload";
 	}
 
-	private Property persistProperty(MultipartHttpServletRequest request, Principal principal) {
+	private Property persistProperty(HttpServletRequest request, Principal principal) {
 		Property prop = new Property();
-		prop.setStreetNumber(request.getParameter("street_number"));
-		prop.setStreetName(request.getParameter("street_name"));
+		log.info("STREET NUMBER: " + request.getParameter("streetNumber"));
+		log.info("DATE: " + request.getParameter("dateConstructed"));
+		prop.setStreetNumber(request.getParameter("streetNumber"));
+		prop.setStreetName(request.getParameter("streetName"));
 		prop.setCity(request.getParameter("city"));
 		prop.setProvince(request.getParameter("province"));
-		prop.setPostalCode(request.getParameter("postal_code"));
+		prop.setPostalCode(request.getParameter("postalCode"));
 		prop.setCountry(request.getParameter("country"));
 		
-		if (request.getParameter("lat") != null && request.getParameter("lat").length() > 0) { 
-			prop.setLattitude(Double.parseDouble(request.getParameter("lat")));
+		if (request.getParameter("lattitude") != null && request.getParameter("lattitude").length() > 0) { 
+			prop.setLattitude(Double.parseDouble(request.getParameter("lattitude")));
 		}
 		
-		if (request.getParameter("lng") != null && request.getParameter("lng").length() > 0) {
-			prop.setLongitude(Double.parseDouble(request.getParameter("lng")));
+		if (request.getParameter("longitude") != null && request.getParameter("longitude").length() > 0) {
+			prop.setLongitude(Double.parseDouble(request.getParameter("longitude")));
 		}
 
-		prop.setPropertyName(request.getParameter("property_name"));
-		prop.setDescription(request.getParameter("property_description"));
+		prop.setPropertyName(request.getParameter("propertyName"));
+		prop.setDescription(request.getParameter("description"));
 		
-		if (request.getParameter("plot_size") != null && request.getParameter("plot_size").length() > 0) {
-			prop.setPlotSize(Integer.parseInt(request.getParameter("plot_size")));
+		if (request.getParameter("plotSize") != null && request.getParameter("plotSize").length() > 0) {
+			prop.setPlotSize(Integer.parseInt(request.getParameter("plotSize")));
 		}
 		
-		if (request.getParameter("building_size") != null && request.getParameter("building_size").length() > 0) {
-			prop.setBuildingSize(Integer.parseInt(request.getParameter("building_size")));
+		if (request.getParameter("buildingSize") != null && request.getParameter("buildingSize").length() > 0) {
+			prop.setBuildingSize(Integer.parseInt(request.getParameter("buildingSize")));
 		}
 
-		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+		SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
 		java.util.Date utilDate = null;
-		if (request.getParameter("building_date") != null && request.getParameter("building_date").length() > 0) {
+		if (request.getParameter("dateConstructed") != null && request.getParameter("dateConstructed").length() > 0) {
 			try {
-				utilDate = sdf.parse(request.getParameter("building_date"));
+				log.info("parsing date: " + request.getParameter("dateConstructed"));
+				utilDate = sdf.parse(request.getParameter("dateConstructed"));
+				
 			} catch (ParseException e) {
-				log.error("Cannot parse this string to a date"
-						+ request.getParameter("building_date"));
+				log.error("Cannot parse this string to a date" + request.getParameter("dateConstructed"));
 				e.printStackTrace();
 			}
 			
@@ -148,9 +138,9 @@ public class UploadController {
 			}
 		}
 
-//		propertyService.save(prop, principal.getName());
-//		
-//		log.info("Saved property");
+		propertyService.save(prop, principal.getName());
+		
+		log.info("Saved property with date: " + prop.getDateConstructed());
 		
 		return prop;
 	}
@@ -172,10 +162,27 @@ public class UploadController {
 		return "upload";
 	}
 	
-	@RequestMapping(value = "/uploadME", method = RequestMethod.POST)
-	public String uploadMe(@Valid @ModelAttribute("property") Property property, BindingResult result, HttpServletRequest request, HttpServletResponse response) {
+	@RequestMapping(value = "/uploadNoImages", method = RequestMethod.POST)
+	public String uploadNoImages(HttpServletRequest request, HttpServletResponse response, Principal principal) {
 		log.info("UPLOADING - AJAXPOST");
-		//log.info("Street number: " + request.getParameter("street_number"));
+		
+		log.info("Street number: " + request.getParameter("streetNumber"));
+		log.info("Street name: " + request.getParameter("streetName"));
+		log.info("City: " + request.getParameter("city"));
+		log.info("Province: " + request.getParameter("province"));
+		log.info("Postal Code: " + request.getParameter("postalCode"));
+		log.info("Country: " + request.getParameter("country"));
+		log.info("longitude: " + request.getParameter("longitude"));
+		log.info("longitude: " + request.getParameter("longitude"));
+
+		log.info("propertyName: " + request.getParameter("propertyName"));
+		log.info("description: " + request.getParameter("description"));
+		log.info("plotSize: " + request.getParameter("plotSize"));
+		log.info("buildingSize: " + request.getParameter("buildingSize"));
+		log.info("dateConstructed: " + request.getParameter("dateConstructed"));
+		
+		Property property = persistProperty(request, principal);
+		log.info("Street number: " + property.getStreetNumber());
 		return "upload";
 	}
 }

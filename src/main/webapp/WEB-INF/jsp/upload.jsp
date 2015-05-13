@@ -8,37 +8,50 @@
 <%@ include file="../layout/taglib.jsp"%>
 
 
-<form:form method="POST" commandName="property" action="/upload.html" enctype="multipart/form-data" id="propertyForm">
+
 <div class="container-fluid">
 
 	<div class="row">
-		<div class="col-md-2">
+		<div class="col-md-4">
 			<div class="panel panel-info">
-				<div class="panel-heading">Type property address here</div>
+				<div class="panel-heading">Type property address here(autocompletes)</div>
 				<div class="panel-body">
 					<fieldset class="details">
 						<div class="input-group">
 							<span class="input-group-addon" id="sizing-addon">Find</span> 
-							<input class="form-control" data-toggle="popover"
+							<input class="form-control" 
+								data-toggle="popover"
 								data-placement="right"
 								data-content="Continue typing until you see your location in the list. Click your location and the form will be filled in for you."
-								data-original-title="Let's find your location!" id="formmapper"
+								data-original-title="Let's find your location!" 
+								id="formmapper"
 								type="text" 
 								placeholder="Just start typing here..."
 								aria-describedby="sizing-addon" />
-									<!--               		<span class="input-group-btn"> -->
-									<!--               			<button id="find" class="btn btn-success" type="button"><i class="icon-map-marker icon-white"></i> Find!</button> -->
-									<!--               		</span> -->
+<!-- 							<span class="input-group-btn"> -->
+<!-- 								<button id="find" class="btn btn-success" type="button"><i class="icon-map-marker icon-white"></i> Find!</button> -->
+<!-- 							</span> -->
 								
 						</div> <!-- end of input group -->
 					</fieldset>
 				</div><!-- end of panel body -->
 			</div><!-- end of panel -->
-		
-			<!-- inside same col-md-2 -->
+		</div> <!-- end of column -->
+		<div class="col-md-8">
+			<div class="panel panel-info">
+				<div class="panel-heading">Property Features</div>
+				<div class="panel-body">
+				</div> <!-- end of panel body -->
+			</div> <!--  end of panel -->
+		</div> <!-- end of column -->
+	</div> <!-- end of row -->
+	
+	<div class="row">
+		<div class="col-md-2">
 			<div class="panel panel-info">
 				<div class="panel-heading">Address Details(autocompletes)</div>
 				<div class="panel-body">
+					<form action="/upload.html">
 					<fieldset class="details">
 
 							<div class="input-group">
@@ -107,11 +120,71 @@
 									aria-describedby="basic-addon8"/>
 							</div>
 						</fieldset>
-<!-- 						</form> -->
+						</form>
 					</div><!-- end of panel body -->
 				</div><!-- end of panel -->
-			</div><!-- now we close col-md-2 to put map next to it -->
 
+			<div class="panel panel-info">
+				<div class="panel-heading">Property Details</div>
+				<div class="panel-body">
+					<fieldset class="details">
+	
+						<div class="input-group">
+							<span class="input-group-addon" id="sizing-addon10">Name</span>
+							<input id="propertyName" class="form-control" placeholder="Property Name" aria-describedby="sizing-addon10"/>
+	<%-- 								<form:errors path="propertyName"/> --%>
+						</div>	
+	
+						<div class="input-group">
+							<span class="input-group-addon" id="sizing-addon11">Price(R/m<sup>2</sup>)</span> 
+							<input type="text" class="form-control"
+								placeholder="Rand per square meter" 
+								name="pricePerSqm"
+								id="pricePerSqm"
+								aria-describedby="sizing-addon11"/>
+						</div>
+	
+						<div class="input-group">
+							<span class="input-group-addon" id="sizing-addon12">Description</span>
+							<textarea class="form-control" 
+								placeholder="Description"
+								name="propety_description"
+								id="description" 
+								aria-describedby="sizing-addon12">
+							</textarea>
+						</div>
+	
+						<div class="input-group">
+							<span class="input-group-addon" id="sizing-addon13">Land size</span> 
+							<input type="text" class="form-control" 
+								placeholder="per square meter"
+								name="plotSize"
+								id="plotSize"
+								aria-describedby="sizing-addon13"/>
+						</div>
+	
+						<div class="input-group">
+							<span class="input-group-addon" id="sizing-addon14">Building size</span> 
+							<input type="text" class="form-control"
+								placeholder="per square meter" 
+								name="buildingSize"
+								id="buildingSize"
+								aria-describedby="sizing-addon14"/>
+						</div>
+					
+						<div class="input-group date">
+							<span class="input-group-addon" id="sizing-addon15">Date built</span> 
+							<input type="text" class="form-control"
+								placeholder="Date building was built" 
+								name="dateConstructed"
+								id="dateConstructed"
+								aria-describedby="sizing-addon15">
+						</div>
+					
+					</fieldset>
+				</div> <!-- end of panel body -->
+			</div> <!-- end of panel -->
+		</div> <!-- end of col md-2 -->
 		
 		<div class="col-md-10">
 			<div class="panel panel-info">
@@ -120,95 +193,17 @@
 					<div class="map_canvas"></div>
 				</div><!-- end of panel body -->
 			</div><!-- end of panel -->
-		</div><!-- end of column -->
-	</div> <!--  end of row -->	
-	
-	<div class="row">
-		<div class="col-md-6">
-			<div class="panel panel-info">
-				<div class="panel-heading">Property Details</div>
-				<div class="panel-body">
-					
-						<fieldset class="details">
-							<div class="input-group">
-								<span class="input-group-addon" id="sizing-addon10">Name</span>
-								<form:input path="propertyName" class="form-control" placeholder="Property Name" aria-describedby="sizing-addon10"/>
-								<form:errors path="propertyName"/>
-							</div>
-							
-							<div class="input-group">
-								<span class="input-group-addon" id="sizing-addon11">Price(R/m<sup>2</sup>)</span> 
-								<input type="text" class="form-control"
-									placeholder="Rand per square meter" 
-									name="pricePerSqm"
-									id="pricePerSqm"
-									aria-describedby="sizing-addon11"/>
-							</div>
-							<div class="input-group">
-								<span class="input-group-addon" id="sizing-addon12">Description</span>
-								<textarea class="form-control" 
-									placeholder="Description"
-									name="propety_description"
-									id="description" 
-									aria-describedby="sizing-addon12">
-								</textarea>
-							</div>
-							<div class="input-group">
-								<span class="input-group-addon" id="sizing-addon13">Plot size(m<sup>2</sup>)</span> 
-								<input type="text" class="form-control" 
-									placeholder="Plot size"
-									name="plotSize"
-									id="plotSize"
-									aria-describedby="sizing-addon13"/>
-							</div>
-							<div class="input-group">
-								<span class="input-group-addon" id="sizing-addon14">Building size(m<sup>2</sup>)</span> 
-								<input type="text" class="form-control"
-									placeholder="Building size" 
-									name="buildingSize"
-									id="buildingSize"
-									aria-describedby="sizing-addon14"/>
-							</div>
-							<div class="input-group">
-								<span class="input-group-addon" id="sizing-addon15">Year built(yyyy-mm-dd)</span> 
-								<input type="text" class="form-control"
-									placeholder="Year building was built" 
-									name="dateConstructed"
-									id="dateConstructed"
-									aria-describedby="sizing-addon15"/>
-							</div>
-						</fieldset>
-<!-- 					</form> -->
-				</div> <!-- end of panel body -->
-			</div> <!-- end of panel -->
-		</div> <!-- end of col md-5 -->
-		<div class="col-md-6">
 			
-			<div class="panel panel-info">
-				<div class="panel-heading">Property Features</div>
-				<div class="panel-body">
-				</div> <!-- end of panel body -->
-			</div> <!--  end of panel -->
-
-		</div> <!--  end of col md-2 -->
-	</div><!-- end of row -->
-</div><!-- end of container fluid -->
-</form:form>
-	
-
-<div class="container-fluid">
-	<div class="row">
-		<div class="col-md-10">
-			<div class="panel panel-info">
+				<div class="panel panel-info">
 				<div class="panel-heading">Upload Property Images</div>
 				<div class="panel-body">
 					<!-- The file upload form used as target for the file upload widget  -->
-					<form:form method="POST" commandName="property" action="/upload.html" enctype="multipart/form-data" class="dropzone" id="filedropzone">
+					<form method="POST" action="/upload.html" enctype="multipart/form-data" class="dropzone" id="filedropzone">
 	
 	  					<div class="fallback">
     						<input name="file" type="file" multiple />
   						</div>
-					</form:form>
+					</form>
 					
 					<script>
                  		Dropzone.options.filedropzone = {
@@ -245,7 +240,7 @@
               	          			formData.append("description", $("#description").val());
               	          			formData.append("plotSize", $('#plotSize').val());
               	          			formData.append("buildingSize", $('#buildingSize').val());
-              	          			//formData.append("dateConstructed", $('#dateConstructed').val());
+              	          			formData.append("dateConstructed", $('#dateConstructed').datepicker({ dateFormat: 'dd-mm-yy' }).val());
 
               	        		});
               			
@@ -265,15 +260,30 @@
                							fileDropzone.processQueue();  
                						} else {
                							//submit values without images
-               					
-               				   			$.post( "uploadME.html", $( "#propertyForm" ).serialize() );
+               							alert("DATE: " + $("#dateConstructed").datepicker({ dateFormat: 'dd-mm-yy' }).val());
+               				   			$.post( "uploadNoImages.html", { 
+
+               				   					streetNumber: $("#streetNumber").val(),
+               				   					streetName: $("#streetName").val(),
+               				   					city: $("#city").val(),
+               				   					province: $("#province").val(),
+               				   					postalCode: $("#postalCode").val(),
+               				   					country: $("#country").val(),
+               				   					lattitude: $("#lattitude").val(),
+               				   					longitude: $("#longitude").val(),
+               				   					
+               				 					propertyName: $("#propertyName").val(),
+               									pricePerSqm: $("#pricePerSqm").val(),
+               									description: $("#description").val(),
+               									plotSize: $("#plotSize").val(),
+               									buildingSize: $("#buildingSize").val(),
+               									dateConstructed: $("#dateConstructed").datepicker({ dateFormat: 'dd-mm-yy' }).val()
+               				   			
+               				   				}
+               				   			);
                							//fileDropzone.uploadFiles([]);
                					
                						}
-               				
-               				 		// this will submit your form to the specified action path
-              						// after this, your whole form will get submitted with all the inputs + your files and the php code will remain as usual 
-        							//REMEMBER you DON'T have to call ajax or anything by yourself, dropzone will take care of that
             					});
 
           					} // init end
@@ -284,10 +294,11 @@
 				
 				</div> <!--end of panel body  -->
 			</div> <!-- end of panel  -->
-	</div>  <!-- end of col-10  -->
-	</div> <!-- end of row -->
+			
+		</div><!-- end of column -->
+	</div> <!--  end of row -->
 
-	<input type="button" id="sbmtbtn" value="submit"/>
+	<button id="sbmtbtn" type="button" class="btn btn-primary">Submit</button>
 </div> <!--  end of container fluid -->
 
 <script>
@@ -322,5 +333,12 @@
 			});
 
 		$('input:disabled').val('Add location above');
+		
+		$('#dateConstructed').datepicker({
+			 changeMonth: true,
+		      changeYear: true,
+		      dateFormat: "dd/mm/yy",
+		      yearRange: "-100:+0" //last 100 years
+		});
 	});
 </script>

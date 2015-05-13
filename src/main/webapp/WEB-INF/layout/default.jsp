@@ -17,6 +17,7 @@
 
 <%-- <link href="<spring:url value="/resources/css/bootstrap.css" />" rel="stylesheet"> --%>
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
+<link rel="stylesheet" href="http://code.jquery.com/ui/1.11.3/themes/smoothness/jquery-ui.css" />
 
 <link href="<spring:url value="/resources/css/style.css" />" rel="stylesheet">
 <link href="<spring:url value="/resources/css/dropzone.css" />" rel="stylesheet">
